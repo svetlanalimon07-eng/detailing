@@ -1223,15 +1223,13 @@
 
     document.getElementById('clientPhone').addEventListener('input', () => showPhoneError(''));
 
-    /* ----- Работа с localStorage и временем блокировки ----- */
-    const BLOCK_DURATION = 3 * 60 * 60 * 1000; // 3 часа в миллисекундах
+    const BLOCK_DURATION = 3 * 60 * 60 * 1000;
 
     function isServiceBlocked(title) {
         const data = JSON.parse(localStorage.getItem('submittedServices') || '{}');
         if (!data[title]) return false;
         const elapsed = Date.now() - data[title];
         if (elapsed > BLOCK_DURATION) {
-            // Время вышло — удаляем блокировку
             delete data[title];
             localStorage.setItem('submittedServices', JSON.stringify(data));
             return false;
@@ -1245,7 +1243,6 @@
         localStorage.setItem('submittedServices', JSON.stringify(data));
     }
 
-    /* ----- Открытие модалки ----- */
     document.querySelectorAll('.card-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const card = btn.closest('.service-card');
@@ -1275,7 +1272,6 @@
         });
     });
 
-    /* ----- Закрытие модалки ----- */
     function closeModal() {
         document.getElementById('bookingModal').style.display = 'none';
     }
@@ -1286,7 +1282,6 @@
     });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    /* ----- Отправка формы ----- */
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
         e.preventDefault();
 
@@ -1332,10 +1327,8 @@
             });
 
             if (res.ok) {
-                // Блокируем услугу на 3 часа
                 const title = currentService.split(' (')[0];
                 blockService(title);
-
                 formMsg.innerHTML = '<span style="color:#4caf50;">✅ Заявка принята! Мы свяжемся с вами.</span>';
                 setTimeout(() => {
                     closeModal();
@@ -1351,7 +1344,6 @@
         }
     });
 
-    /* ----- Анимация появления ----- */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
