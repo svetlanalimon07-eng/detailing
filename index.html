@@ -1223,6 +1223,28 @@
 
     document.getElementById('clientPhone').addEventListener('input', () => showPhoneError(''));
 
+    /* ----- Работа с localStorage и временем блокировки ----- */
+    const BLOCK_DURATION = 3 * 60 * 60 * 1000; // 3 часа в миллисекундах
+
+    function isServiceBlocked(title) {
+        const data = JSON.parse(localStorage.getItem('submittedServices') || '{}');
+        if (!data[title]) return false;
+        const elapsed = Date.now() - data[title];
+        if (elapsed > BLOCK_DURATION) {
+            // Время вышло — удаляем блокировку
+            delete data[title];
+            localStorage.setItem('submittedServices', JSON.stringify(data));
+            return false;
+        }
+        return true;
+    }
+
+    function blockService(title) {
+        const data = JSON.parse(localStorage.getItem('submittedServices') || '{}');
+        data[title] = Date.now();
+        localStorage.setItem('submittedServices', JSON.stringify(data));
+    }
+
     /* ----- Открытие модалки ----- */
     document.querySelectorAll('.card-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -1231,9 +1253,7 @@
             const price = card.querySelector('.card-price').innerText.trim();
             currentService = `${title} (${price})`;
 
-            const submittedServices = JSON.parse(localStorage.getItem('submittedServices') || '[]');
-
-            if (submittedServices.includes(title)) {
+            if (isServiceBlocked(title)) {
                 document.getElementById('modalServiceName').textContent = title;
                 document.getElementById('bookingForm').style.display = 'none';
                 document.getElementById('alreadySubmitted').style.display = 'flex';
@@ -1312,13 +1332,10 @@
             });
 
             if (res.ok) {
-                // Сохраняем в localStorage
+                // Блокируем услугу на 3 часа
                 const title = currentService.split(' (')[0];
-                const submittedServices = JSON.parse(localStorage.getItem('submittedServices') || '[]');
-                if (!submittedServices.includes(title)) {
-                    submittedServices.push(title);
-                    localStorage.setItem('submittedServices', JSON.stringify(submittedServices));
-                }
+                blockService(title);
+
                 formMsg.innerHTML = '<span style="color:#4caf50;">✅ Заявка принята! Мы свяжемся с вами.</span>';
                 setTimeout(() => {
                     closeModal();
