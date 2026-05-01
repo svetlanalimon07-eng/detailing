@@ -2,22 +2,16 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, view-fit=cover">
     <title>SIBOIL DETAIL | Детейлинг сервис в Новосибирске</title>
-
-    <!-- SEO -->
     <meta name="description" content="SIBOIL DETAIL — профессиональный детейлинг в Новосибирске. Тонирование, химчистка, полировка, бронирование, PDR. Красный проспект 222 к2.">
-
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="SIBOIL DETAIL — Детейлинг сервис в Новосибирске">
     <meta property="og:description" content="Тонирование, химчистка, полировка, бронирование кузова и оптики, PDR. Красный проспект 222 к2. Тел: +7 923 177 79 00">
     <meta property="og:image" content="https://i.ibb.co/3mDzn6WY/IMG-9376.jpg">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
     <style>
         :root {
             --red: #c41e3a;
@@ -33,10 +27,8 @@
             --border: rgba(255,255,255,0.07);
             --border-red: rgba(196,30,58,0.3);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-
         body {
             font-family: 'Nunito', sans-serif;
             background: var(--black);
@@ -44,14 +36,7 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ===== HERO ===== */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
         .hero {
             min-height: 100vh;
             background: var(--black);
@@ -63,47 +48,26 @@
             overflow: hidden;
             padding: 60px 24px;
         }
-
         .hero::before {
             content: '';
             position: absolute;
             inset: 0;
-            background:
-                radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196,30,58,0.12) 0%, transparent 70%),
-                radial-gradient(ellipse 60% 40% at 50% 100%, rgba(196,30,58,0.06) 0%, transparent 60%);
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(196,30,58,0.12) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 50% 100%, rgba(196,30,58,0.06) 0%, transparent 60%);
             pointer-events: none;
         }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -10%;
-            width: 120%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--red), transparent);
-            opacity: 0.6;
-        }
-
-        .hero-inner {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-        }
-
+        .hero-inner { position: relative; z-index: 2; max-width: 800px; }
         .hero-logo {
-            width: 160px;
-            height: 160px;
+            width: 120px;
+            height: 120px;
             object-fit: contain;
             margin-bottom: 28px;
             filter: drop-shadow(0 0 40px rgba(196,30,58,0.5));
             animation: pulse-glow 3s ease-in-out infinite;
         }
-
         @keyframes pulse-glow {
             0%, 100% { filter: drop-shadow(0 0 30px rgba(196,30,58,0.4)); }
-            50%       { filter: drop-shadow(0 0 55px rgba(196,30,58,0.7)); }
+            50% { filter: drop-shadow(0 0 55px rgba(196,30,58,0.7)); }
         }
-
         .hero-brand {
             font-family: 'Oswald', sans-serif;
             font-size: clamp(3rem, 8vw, 6rem);
@@ -112,10 +76,8 @@
             line-height: 1;
             margin-bottom: 8px;
         }
-
         .hero-brand .red { color: var(--red); }
         .hero-brand .white { color: var(--white); }
-
         .hero-sub {
             font-family: 'Oswald', sans-serif;
             font-size: clamp(0.85rem, 2vw, 1.1rem);
@@ -124,23 +86,14 @@
             text-transform: uppercase;
             margin-bottom: 32px;
         }
-
         .hero-tagline {
             font-size: clamp(1rem, 2.5vw, 1.3rem);
             color: var(--gray-light);
             margin-bottom: 48px;
             font-weight: 400;
         }
-
         .hero-tagline span { color: var(--red); font-weight: 600; }
-
-        .hero-actions {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
+        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
         .btn-primary {
             display: inline-flex;
             align-items: center;
@@ -160,13 +113,10 @@
             box-shadow: 0 8px 30px rgba(196,30,58,0.35);
             text-transform: uppercase;
         }
-
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 14px 40px rgba(196,30,58,0.5);
-            background: linear-gradient(135deg, var(--red-bright) 0%, var(--red) 100%);
         }
-
         .btn-outline {
             display: inline-flex;
             align-items: center;
@@ -185,13 +135,7 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
         }
-
-        .btn-outline:hover {
-            border-color: var(--red);
-            color: var(--red);
-            transform: translateY(-3px);
-        }
-
+        .btn-outline:hover { border-color: var(--red); color: var(--red); transform: translateY(-3px); }
         .scroll-hint {
             position: absolute;
             bottom: 32px;
@@ -207,36 +151,28 @@
             text-transform: uppercase;
             animation: bounce 2s infinite;
         }
-
         @keyframes bounce {
             0%, 100% { transform: translateX(-50%) translateY(0); }
-            50%       { transform: translateX(-50%) translateY(8px); }
+            50% { transform: translateX(-50%) translateY(8px); }
         }
-
-        /* ===== STATS ===== */
         .stats {
             background: var(--black-2);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
             padding: 40px 0;
         }
-
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 0;
         }
-
         .stat-item {
             text-align: center;
             padding: 20px 16px;
             border-right: 1px solid var(--border);
             transition: background 0.3s;
         }
-
         .stat-item:last-child { border-right: none; }
-        .stat-item:hover { background: rgba(196,30,58,0.05); }
-
         .stat-number {
             font-family: 'Oswald', sans-serif;
             font-size: 2.4rem;
@@ -245,19 +181,9 @@
             line-height: 1;
             margin-bottom: 6px;
         }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--gray);
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        /* ===== SECTION ===== */
+        .stat-label { font-size: 0.8rem; color: var(--gray); letter-spacing: 0.05em; text-transform: uppercase; }
         .section { padding: 90px 0; }
-
         .section-header { margin-bottom: 60px; }
-
         .section-eyebrow {
             font-family: 'Oswald', sans-serif;
             font-size: 0.8rem;
@@ -269,7 +195,6 @@
             align-items: center;
             gap: 12px;
         }
-
         .section-eyebrow::before {
             content: '';
             display: block;
@@ -277,7 +202,6 @@
             height: 2px;
             background: var(--red);
         }
-
         .section-title {
             font-family: 'Oswald', sans-serif;
             font-size: clamp(2rem, 4vw, 3rem);
@@ -285,12 +209,8 @@
             color: var(--white);
             line-height: 1.1;
         }
-
         .section-title span { color: var(--red); }
-
-        /* ===== УСЛУГИ ===== */
         .services-bg { background: var(--black); }
-
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -298,7 +218,6 @@
             background: var(--border);
             border: 1px solid var(--border);
         }
-
         .service-card {
             background: var(--black-card);
             padding: 36px 32px;
@@ -307,7 +226,6 @@
             transition: background 0.3s ease;
             cursor: default;
         }
-
         .service-card::before {
             content: '';
             position: absolute;
@@ -317,10 +235,8 @@
             background: linear-gradient(180deg, var(--red), var(--red-dark));
             transition: height 0.4s ease;
         }
-
         .service-card:hover { background: #1c1010; }
         .service-card:hover::before { height: 100%; }
-
         .card-icon {
             width: 52px;
             height: 52px;
@@ -335,12 +251,6 @@
             margin-bottom: 24px;
             transition: all 0.3s;
         }
-
-        .service-card:hover .card-icon {
-            background: rgba(196,30,58,0.2);
-            border-color: var(--red);
-        }
-
         .card-title {
             font-family: 'Oswald', sans-serif;
             font-size: 1.3rem;
@@ -349,14 +259,7 @@
             margin-bottom: 12px;
             letter-spacing: 0.02em;
         }
-
-        .card-desc {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 28px;
-            line-height: 1.7;
-        }
-
+        .card-desc { font-size: 0.9rem; color: var(--gray); margin-bottom: 28px; line-height: 1.7; }
         .card-price {
             font-family: 'Oswald', sans-serif;
             font-size: 2rem;
@@ -365,14 +268,7 @@
             margin-bottom: 24px;
             line-height: 1;
         }
-
-        .card-price small {
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: var(--gray);
-            font-family: 'Nunito', sans-serif;
-        }
-
+        .card-price small { font-size: 0.85rem; font-weight: 400; color: var(--gray); font-family: 'Nunito', sans-serif; }
         .card-btn {
             display: inline-flex;
             align-items: center;
@@ -391,59 +287,24 @@
             width: 100%;
             justify-content: center;
         }
-
-        .card-btn:hover {
-            background: var(--red);
-            border-color: var(--red);
-            color: var(--white);
-        }
-
-        .card-btn i { transition: transform 0.3s; }
-        .card-btn:hover i { transform: translateX(4px); }
-
-        /* ===== ПОЧЕМУ МЫ ===== */
+        .card-btn:hover { background: var(--red); border-color: var(--red); color: var(--white); }
         .why-bg { background: var(--black-2); }
-
         .why-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 24px;
         }
-
         .why-item {
             padding: 28px 24px;
             border: 1px solid var(--border);
             border-radius: 4px;
             transition: border-color 0.3s, transform 0.3s;
         }
-
-        .why-item:hover {
-            border-color: var(--border-red);
-            transform: translateY(-4px);
-        }
-
+        .why-item:hover { border-color: var(--border-red); transform: translateY(-4px); }
         .why-icon { font-size: 1.6rem; color: var(--red); margin-bottom: 16px; }
-
-        .why-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 8px;
-        }
-
+        .why-title { font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--white); margin-bottom: 8px; }
         .why-text { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
-
-        /* ===== ОТЗЫВЫ 2ГИС ===== */
         .reviews-bg { background: var(--black); }
-
-        .reviews-widget {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 32px;
-        }
-
         .reviews-rating-block {
             display: flex;
             align-items: center;
@@ -455,11 +316,6 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-
-        .reviews-score {
-            text-align: center;
-        }
-
         .reviews-score-number {
             font-family: 'Oswald', sans-serif;
             font-size: 4rem;
@@ -467,53 +323,8 @@
             color: var(--white);
             line-height: 1;
         }
-
-        .reviews-score-number span {
-            font-size: 1.8rem;
-            color: var(--gray);
-        }
-
-        .reviews-stars {
-            display: flex;
-            gap: 4px;
-            justify-content: center;
-            margin: 8px 0 4px;
-        }
-
+        .reviews-score-number span { font-size: 1.8rem; color: var(--gray); }
         .reviews-stars i { color: #f5a623; font-size: 1.2rem; }
-
-        .reviews-count {
-            font-size: 0.8rem;
-            color: var(--gray);
-            letter-spacing: 0.05em;
-        }
-
-        .reviews-divider {
-            width: 1px;
-            height: 80px;
-            background: var(--border);
-        }
-
-        .reviews-2gis-info {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .reviews-2gis-label {
-            font-size: 0.75rem;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-
-        .reviews-2gis-name {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--white);
-        }
-
         .btn-2gis {
             display: inline-flex;
             align-items: center;
@@ -530,41 +341,15 @@
             border-radius: 4px;
             text-decoration: none;
             transition: all 0.3s;
-            white-space: nowrap;
         }
-
-        .btn-2gis:hover {
-            background: var(--red);
-            border-color: var(--red);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(196,30,58,0.35);
-        }
-
-        .btn-2gis .badge-2gis {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #1ba53b;
-            color: white;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 2px 7px;
-            border-radius: 3px;
-            letter-spacing: 0.05em;
-        }
-
-        /* ===== КОНТАКТЫ ===== */
+        .btn-2gis:hover { background: var(--red); border-color: var(--red); transform: translateY(-2px); }
         .contact-bg { background: var(--black-2); }
-
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1.4fr;
             gap: 48px;
             align-items: start;
         }
-
-        .contact-list { display: flex; flex-direction: column; gap: 16px; }
-
         .contact-item {
             display: flex;
             align-items: center;
@@ -574,12 +359,7 @@
             border-radius: 4px;
             transition: border-color 0.3s, background 0.3s;
         }
-
-        .contact-item:hover {
-            border-color: var(--border-red);
-            background: rgba(196,30,58,0.04);
-        }
-
+        .contact-item:hover { border-color: var(--border-red); background: rgba(196,30,58,0.04); }
         .contact-icon {
             width: 42px;
             height: 42px;
@@ -593,36 +373,11 @@
             font-size: 1rem;
             flex-shrink: 0;
         }
-
-        .contact-label {
-            font-size: 0.75rem;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 3px;
-        }
-
-        .contact-value {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
-            color: var(--white);
-            letter-spacing: 0.02em;
-        }
-
-        .contact-value a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
+        .contact-label { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 3px; }
+        .contact-value { font-family: 'Oswald', sans-serif; font-size: 1.1rem; color: var(--white); letter-spacing: 0.02em; }
+        .contact-value a { color: var(--white); text-decoration: none; transition: color 0.2s; }
         .contact-value a:hover { color: var(--red); }
-
-        .map-wrapper {
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
+        .map-wrapper { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
         .map-wrapper iframe {
             width: 100%;
             height: 340px;
@@ -630,36 +385,11 @@
             display: block;
             filter: grayscale(80%) invert(90%) hue-rotate(180deg);
         }
-
-        .map-amenities {
-            display: flex;
-            gap: 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .amenity {
-            flex: 1;
-            padding: 14px 10px;
-            text-align: center;
-            font-size: 0.78rem;
-            color: var(--gray);
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .amenity:last-child { border-right: none; }
-        .amenity i { color: var(--red); font-size: 1rem; }
-
-        /* ===== ФУТЕР ===== */
         .footer {
             background: var(--black-2);
             border-top: 1px solid var(--border);
             padding: 28px 0;
         }
-
         .footer-inner {
             display: flex;
             justify-content: space-between;
@@ -667,35 +397,11 @@
             gap: 16px;
             flex-wrap: wrap;
         }
-
-        .footer-brand {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
-            letter-spacing: 0.1em;
-        }
-
+        .footer-brand { font-family: 'Oswald', sans-serif; font-size: 1.1rem; letter-spacing: 0.1em; }
         .footer-brand .red { color: var(--red); }
         .footer-copy { font-size: 0.8rem; color: var(--gray); }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: color 0.2s;
-        }
-
+        .footer-links a { color: var(--gray); text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px; margin-left: 20px; transition: color 0.2s; }
         .footer-links a:hover { color: var(--red); }
-
-        /* ===== WhatsApp ===== */
         .whatsapp-btn {
             position: fixed;
             bottom: 28px;
@@ -714,13 +420,7 @@
             box-shadow: 0 6px 24px rgba(37,211,102,0.4);
             transition: transform 0.3s, box-shadow 0.3s;
         }
-
-        .whatsapp-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 32px rgba(37,211,102,0.55);
-        }
-
-        /* ===== МОДАЛЬНОЕ ОКНО ===== */
+        .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.55); }
         .modal-overlay {
             display: none;
             position: fixed;
@@ -731,7 +431,6 @@
             align-items: center;
             backdrop-filter: blur(4px);
         }
-
         .modal-box {
             background: var(--black-card);
             border: 1px solid var(--border-red);
@@ -742,19 +441,13 @@
             position: relative;
             box-shadow: 0 0 80px rgba(196,30,58,0.2);
         }
-
-        .modal-top-line {
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--red), var(--red-dark));
-        }
-
         .modal-close {
             position: absolute;
             top: 10px; right: 10px;
             width: 44px; height: 44px;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: transparent;
             border: none;
             color: var(--gray);
@@ -763,12 +456,7 @@
             border-radius: 4px;
             transition: color 0.2s, background 0.2s;
         }
-
-        .modal-close:hover {
-            color: var(--white);
-            background: rgba(255,255,255,0.06);
-        }
-
+        .modal-close:hover { color: var(--white); background: rgba(255,255,255,0.06); }
         .modal-title {
             font-family: 'Oswald', sans-serif;
             font-size: 1.6rem;
@@ -777,7 +465,6 @@
             margin-bottom: 6px;
             letter-spacing: 0.03em;
         }
-
         .modal-service-badge {
             display: inline-block;
             background: rgba(196,30,58,0.15);
@@ -790,12 +477,7 @@
             font-family: 'Oswald', sans-serif;
             letter-spacing: 0.05em;
         }
-
-        .modal-field {
-            position: relative;
-            margin-bottom: 14px;
-        }
-
+        .modal-field { position: relative; margin-bottom: 14px; }
         .modal-field i {
             position: absolute;
             left: 16px;
@@ -804,7 +486,6 @@
             color: var(--gray);
             font-size: 0.9rem;
         }
-
         .modal-input {
             width: 100%;
             padding: 14px 14px 14px 44px;
@@ -817,27 +498,10 @@
             outline: none;
             transition: border-color 0.2s;
         }
-
         .modal-input::placeholder { color: #555; }
-
-        .modal-input:focus {
-            border-color: var(--red);
-            background: rgba(196,30,58,0.04);
-        }
-
-        .modal-input.error-border {
-            border-color: var(--red);
-            background: rgba(196,30,58,0.06);
-        }
-
-        .phone-error {
-            color: var(--red);
-            font-size: 11px;
-            margin-bottom: 14px;
-            margin-left: 4px;
-            min-height: 16px;
-        }
-
+        .modal-input:focus { border-color: var(--red); background: rgba(196,30,58,0.04); }
+        .modal-input.error-border { border-color: var(--red); background: rgba(196,30,58,0.06); }
+        .phone-error { color: var(--red); font-size: 11px; margin-bottom: 14px; margin-left: 4px; min-height: 16px; }
         .modal-submit {
             width: 100%;
             background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
@@ -857,530 +521,108 @@
             gap: 8px;
             transition: all 0.3s;
         }
-
-        .modal-submit:hover:not(:disabled) {
-            box-shadow: 0 8px 24px rgba(196,30,58,0.4);
-            transform: translateY(-1px);
-        }
-
-        .modal-submit:disabled {
-            opacity: 0.55;
-            cursor: not-allowed;
-        }
-
-        .form-message {
-            margin-top: 16px;
-            font-size: 13px;
-            text-align: center;
-            min-height: 18px;
-        }
-
-        /* ===== АНИМАЦИИ ===== */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== АДАПТИВ ===== */
-        @media (max-width: 900px) {
-            .contact-grid { grid-template-columns: 1fr; }
-            .reviews-divider { display: none; }
-        }
-
+        .modal-submit:hover:not(:disabled) { transform: translateY(-1px); }
+        .modal-submit:disabled { opacity: 0.55; cursor: not-allowed; }
+        .form-message { margin-top: 16px; font-size: 13px; text-align: center; min-height: 18px; }
+        .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
         @media (max-width: 640px) {
             .hero { min-height: auto; padding: 80px 24px 100px; }
             .hero-logo { width: 110px; height: 110px; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .stat-item:nth-child(2) { border-right: none; }
-            .stat-item:nth-child(3) { border-top: 1px solid var(--border); }
             .section { padding: 60px 0; }
             .modal-box { padding: 32px 22px; }
             .whatsapp-btn { bottom: 20px; right: 20px; width: 52px; height: 52px; }
-            .reviews-rating-block { padding: 24px; }
         }
     </style>
 </head>
 <body>
-
-<!-- HERO -->
 <section class="hero">
     <div class="hero-inner">
-        <img src="https://i.ibb.co/pBC15N5z/bv4pqy-Cnuip-Ch-FZOz-Aa3t-Ms-MSq-Opd4tyec-RR6arxjw-R8-B2b9-E5bbj-Ks-Th-TT71-Dwr-P6lr-G-j9-Mf-ZJc1zbx-I0.jpg"
-             alt="SIBOIL DETAIL"
-             class="hero-logo"
-             style="width:120px; height:120px; object-fit:contain; margin-bottom:28px;">
-        <div class="hero-brand">
-            <span class="red">SIBOIL</span><span class="white"> DETAIL</span>
-        </div>
+        <img src="https://i.ibb.co/pBC15N5z/bv4pqy-Cnuip-Ch-FZOz-Aa3t-Ms-MSq-Opd4tyec-RR6arxjw-R8-B2b9-E5bbj-Ks-Th-TT71-Dwr-P6lr-G-j9-Mf-ZJc1zbx-I0.jpg" alt="SIBOIL DETAIL" class="hero-logo">
+        <div class="hero-brand"><span class="red">SIBOIL</span><span class="white"> DETAIL</span></div>
         <div class="hero-sub">Детейлинг сервис · Новосибирск</div>
-        <p class="hero-tagline">
-            Профессиональный уход за вашим автомобилем.<br>
-            <span>Результат, который говорит сам за себя.</span>
-        </p>
-        <div class="hero-actions">
-            <a href="#services" class="btn-primary">
-                <i class="fas fa-arrow-down"></i> Наши услуги
-            </a>
-            <a href="tel:+79231777900" class="btn-outline">
-                <i class="fas fa-phone"></i> Позвонить
-            </a>
-        </div>
+        <p class="hero-tagline">Профессиональный уход за вашим автомобилем.<br><span>Результат, который говорит сам за себя.</span></p>
+        <div class="hero-actions"><a href="#services" class="btn-primary"><i class="fas fa-arrow-down"></i> Наши услуги</a><a href="tel:+79231777900" class="btn-outline"><i class="fas fa-phone"></i> Позвонить</a></div>
     </div>
-    <div class="scroll-hint">
-        <i class="fas fa-chevron-down"></i>
-        <span>Листай вниз</span>
-    </div>
+    <div class="scroll-hint"><i class="fas fa-chevron-down"></i><span>Листай вниз</span></div>
 </section>
-
-<!-- СТАТИСТИКА -->
 <section class="stats">
     <div class="container">
         <div class="stats-grid">
-            <div class="stat-item fade-up">
-                <div class="stat-number">1</div>
-                <div class="stat-label">Год на рынке</div>
-            </div>
-            <div class="stat-item fade-up" style="transition-delay:0.1s">
-                <div class="stat-number">400+</div>
-                <div class="stat-label">Довольных клиентов</div>
-            </div>
-            <div class="stat-item fade-up" style="transition-delay:0.2s">
-                <div class="stat-number">4</div>
-                <div class="stat-label">Услуги в одном месте</div>
-            </div>
-            <div class="stat-item fade-up" style="transition-delay:0.3s">
-                <div class="stat-number">09–20</div>
-                <div class="stat-label">Ежедневно</div>
-            </div>
+            <div class="stat-item fade-up"><div class="stat-number">1</div><div class="stat-label">Год на рынке</div></div>
+            <div class="stat-item fade-up" style="transition-delay:0.1s"><div class="stat-number">400+</div><div class="stat-label">Довольных клиентов</div></div>
+            <div class="stat-item fade-up" style="transition-delay:0.2s"><div class="stat-number">4</div><div class="stat-label">Услуги в одном месте</div></div>
+            <div class="stat-item fade-up" style="transition-delay:0.3s"><div class="stat-number">09–20</div><div class="stat-label">Ежедневно</div></div>
         </div>
     </div>
 </section>
-
-<!-- УСЛУГИ -->
 <section id="services" class="section services-bg">
     <div class="container">
-        <div class="section-header fade-up">
-            <div class="section-eyebrow">Что мы делаем</div>
-            <div class="section-title">Наши <span>услуги</span></div>
-        </div>
+        <div class="section-header fade-up"><div class="section-eyebrow">Что мы делаем</div><div class="section-title">Наши <span>услуги</span></div></div>
         <div class="cards-grid">
-
-            <div class="service-card fade-up">
-                <div class="card-icon"><i class="fas fa-car-side"></i></div>
-                <div class="card-title">Тонирование стёкол</div>
-                <div class="card-desc">Качественная атермальная тонировка. Защита от выгорания, комфорт в салоне, снижение нагрева.</div>
-                <div class="card-price">от 3 000 ₽ <small>/ комплекс</small></div>
-                <button class="card-btn">Записаться <i class="fas fa-arrow-right"></i></button>
-            </div>
-
-            <div class="service-card fade-up" style="transition-delay:0.05s">
-                <div class="card-icon"><i class="fas fa-soap"></i></div>
-                <div class="card-title">Химчистка салона</div>
-                <div class="card-desc">Глубокая очистка обивки, удаление запахов и пятен. Только безопасные профессиональные составы.</div>
-                <div class="card-price">от 10 000 ₽ <small>/ полный цикл</small></div>
-                <button class="card-btn">Записаться <i class="fas fa-arrow-right"></i></button>
-            </div>
-
-            <div class="service-card fade-up" style="transition-delay:0.1s">
-                <div class="card-icon"><i class="fas fa-brush"></i></div>
-                <div class="card-title">Полировка кузова</div>
-                <div class="card-desc">Восстановление блеска, удаление царапин и голограмм. Защитное покрытие в финале.</div>
-                <div class="card-price">от 15 000 ₽ <small>/ комплекс</small></div>
-                <button class="card-btn">Записаться <i class="fas fa-arrow-right"></i></button>
-            </div>
-
-            <div class="service-card fade-up" style="transition-delay:0.15s">
-                <div class="card-icon"><i class="fas fa-hammer"></i></div>
-                <div class="card-title">Правка вмятин (PDR)</div>
-                <div class="card-desc">Технология PDR — быстрое и точное удаление вмятин без нарушения лакокрасочного покрытия.</div>
-                <div class="card-price">от 2 000 ₽ <small>/ вмятина</small></div>
-                <button class="card-btn">Записаться <i class="fas fa-arrow-right"></i></button>
-            </div>
-
+            <div class="service-card fade-up"><div class="card-icon"><i class="fas fa-car-side"></i></div><div class="card-title">Тонирование стёкол</div><div class="card-desc">Качественная атермальная тонировка. Защита от выгорания, комфорт в салоне, снижение нагрева.</div><div class="card-price">от 3 000 ₽ <small>/ комплекс</small></div><button class="card-btn">Записаться <i class="fas fa-arrow-right"></i></button></div>
+            <div class="service-card fade-up" style="transition-delay:0.05s"><div class="card-icon"><i class="fas fa-soap"></i></div><div class="card-title">Химчистка салона</div><div class="card-desc">Глубокая очистка обивки, удаление запахов и пятен. Только безопасные профессиональные составы.</div><div class="card-price">от 10 000 ₽ <small>/ полный цикл</small></div><button class="card-btn">Записаться <i class="fas fa-arrow-right"></i></button></div>
+            <div class="service-card fade-up" style="transition-delay:0.1s"><div class="card-icon"><i class="fas fa-brush"></i></div><div class="card-title">Полировка кузова</div><div class="card-desc">Восстановление блеска, удаление царапин и голограмм. Защитное покрытие в финале.</div><div class="card-price">от 15 000 ₽ <small>/ комплекс</small></div><button class="card-btn">Записаться <i class="fas fa-arrow-right"></i></button></div>
+            <div class="service-card fade-up" style="transition-delay:0.15s"><div class="card-icon"><i class="fas fa-hammer"></i></div><div class="card-title">Правка вмятин (PDR)</div><div class="card-desc">Технология PDR — быстрое и точное удаление вмятин без нарушения лакокрасочного покрытия.</div><div class="card-price">от 2 000 ₽ <small>/ вмятина</small></div><button class="card-btn">Записаться <i class="fas fa-arrow-right"></i></button></div>
         </div>
     </div>
 </section>
-
-<!-- ПОЧЕМУ МЫ -->
 <section class="section why-bg">
     <div class="container">
-        <div class="section-header fade-up">
-            <div class="section-eyebrow">Наши преимущества</div>
-            <div class="section-title">Почему выбирают <span>нас</span></div>
-        </div>
+        <div class="section-header fade-up"><div class="section-eyebrow">Наши преимущества</div><div class="section-title">Почему выбирают <span>нас</span></div></div>
         <div class="why-grid">
-            <div class="why-item fade-up">
-                <div class="why-icon"><i class="fas fa-certificate"></i></div>
-                <div class="why-title">Профессиональные материалы</div>
-                <div class="why-text">Работаем только с проверенными профессиональными составами и плёнками.</div>
-            </div>
-            <div class="why-item fade-up" style="transition-delay:0.08s">
-                <div class="why-icon"><i class="fas fa-clock"></i></div>
-                <div class="why-title">Точно в срок</div>
-                <div class="why-text">Строго соблюдаем договорённости по времени. Ваш автомобиль будет готов когда обещали.</div>
-            </div>
-            <div class="why-item fade-up" style="transition-delay:0.16s">
-                <div class="why-icon"><i class="fas fa-shield-halved"></i></div>
-                <div class="why-title">Гарантия на работы</div>
-                <div class="why-text">Даём гарантию на все виды работ. Если что-то не так — исправим бесплатно.</div>
-            </div>
-            <div class="why-item fade-up" style="transition-delay:0.24s">
-                <div class="why-icon"><i class="fas fa-couch"></i></div>
-                <div class="why-title">Удобная зона ожидания</div>
-                <div class="why-text">Кофе, Wi-Fi и комфортная зона ожидания — пока работаем с вашим авто.</div>
-            </div>
+            <div class="why-item fade-up"><div class="why-icon"><i class="fas fa-certificate"></i></div><div class="why-title">Профессиональные материалы</div><div class="why-text">Работаем только с проверенными профессиональными составами и плёнками.</div></div>
+            <div class="why-item fade-up" style="transition-delay:0.08s"><div class="why-icon"><i class="fas fa-clock"></i></div><div class="why-title">Точно в срок</div><div class="why-text">Строго соблюдаем договорённости по времени. Ваш автомобиль будет готов когда обещали.</div></div>
+            <div class="why-item fade-up" style="transition-delay:0.16s"><div class="why-icon"><i class="fas fa-shield-halved"></i></div><div class="why-title">Гарантия на работы</div><div class="why-text">Даём гарантию на все виды работ. Если что-то не так — исправим бесплатно.</div></div>
+            <div class="why-item fade-up" style="transition-delay:0.24s"><div class="why-icon"><i class="fas fa-couch"></i></div><div class="why-title">Удобная зона ожидания</div><div class="why-text">Кофе, Wi-Fi и комфортная зона ожидания — пока работаем с вашим авто.</div></div>
         </div>
     </div>
 </section>
-
-<!-- ОТЗЫВЫ 2ГИС -->
 <section class="section reviews-bg">
     <div class="container">
-        <div class="section-header fade-up">
-            <div class="section-eyebrow">Мнения клиентов</div>
-            <div class="section-title">Отзывы на <span>2ГИС</span></div>
-        </div>
-        <div class="reviews-widget fade-up">
-            <div class="reviews-rating-block">
-                <div class="reviews-score">
-                    <div class="reviews-score-number">4.8<span>/5</span></div>
-                    <div class="reviews-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <div class="reviews-count">Рейтинг на 2ГИС</div>
-                </div>
-                <div class="reviews-divider"></div>
-                <div class="reviews-2gis-info">
-                    <div class="reviews-2gis-label">Читайте отзывы наших клиентов</div>
-                    <div class="reviews-2gis-name">SIBOIL DETAIL · Новосибирск</div>
-                    <a href="https://2gis.ru/novosibirsk/geo/70000001109861064"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="btn-2gis">
-                        <span class="badge-2gis">2ГИС</span>
-                        <i class="fas fa-star" style="color:#f5a623; font-size:0.85rem;"></i>
-                        Читать все отзывы
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
+        <div class="section-header fade-up"><div class="section-eyebrow">Мнения клиентов</div><div class="section-title">Отзывы на <span>2ГИС</span></div></div>
+        <div class="reviews-rating-block fade-up">
+            <div class="reviews-score"><div class="reviews-score-number">4.8<span>/5</span></div><div class="reviews-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><div class="reviews-count">Рейтинг на 2ГИС</div></div>
+            <div><a href="https://2gis.ru/novosibirsk/geo/70000001109861064" target="_blank" class="btn-2gis"><i class="fas fa-star"></i> Читать отзывы на 2ГИС <i class="fas fa-arrow-right"></i></a></div>
         </div>
     </div>
 </section>
-
-<!-- КОНТАКТЫ -->
 <section id="contacts" class="section contact-bg">
     <div class="container">
-        <div class="section-header fade-up">
-            <div class="section-eyebrow">Приезжайте к нам</div>
-            <div class="section-title">Контакты и <span>адрес</span></div>
-        </div>
+        <div class="section-header fade-up"><div class="section-eyebrow">Приезжайте к нам</div><div class="section-title">Контакты и <span>адрес</span></div></div>
         <div class="contact-grid">
             <div class="contact-list fade-up">
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                    <div>
-                        <div class="contact-label">Телефон</div>
-                        <div class="contact-value"><a href="tel:+79231777900">+7 923 177 79 00</a></div>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div>
-                        <div class="contact-label">Адрес</div>
-                        <div class="contact-value">Красный проспект, 222 к2</div>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
-                    <div>
-                        <div class="contact-label">Режим работы</div>
-                        <div class="contact-value">Ежедневно 09:00 – 20:00</div>
-                    </div>
-                </div>
-                <a href="tel:+79231777900" class="btn-primary" style="justify-content:center; margin-top:8px;">
-                    <i class="fas fa-phone"></i> Позвонить сейчас
-                </a>
+                <div class="contact-item"><div class="contact-icon"><i class="fas fa-phone"></i></div><div><div class="contact-label">Телефон</div><div class="contact-value"><a href="tel:+79231777900">+7 923 177 79 00</a></div></div></div>
+                <div class="contact-item"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div><div class="contact-label">Адрес</div><div class="contact-value">Красный проспект, 222 к2</div></div></div>
+                <div class="contact-item"><div class="contact-icon"><i class="fas fa-clock"></i></div><div><div class="contact-label">Режим работы</div><div class="contact-value">Ежедневно 09:00 – 20:00</div></div></div>
+                <a href="tel:+79231777900" class="btn-primary" style="justify-content:center; margin-top:8px;"><i class="fas fa-phone"></i> Позвонить сейчас</a>
             </div>
-
-            <div class="fade-up" style="transition-delay:0.15s">
-                <div class="map-wrapper">
-                    <iframe
-                        src="https://yandex.ru/map-widget/v1/?ll=82.922734%2C55.058679&z=16&pt=82.922734%2C55.058679~pm2rdm&text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C%20%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%2C%20222%20%D0%BA2"
-                        allowfullscreen
-                        title="Карта SIBOIL DETAIL"
-                        loading="lazy">
-                    </iframe>
-                    <div class="map-amenities">
-                        <div class="amenity">
-                            <i class="fas fa-parking"></i>
-                            <span>Бесплатная парковка</span>
-                        </div>
-                        <div class="amenity">
-                            <i class="fas fa-mug-hot"></i>
-                            <span>Кофе и зона ожидания</span>
-                        </div>
-                        <div class="amenity">
-                            <i class="fas fa-wifi"></i>
-                            <span>Бесплатный Wi-Fi</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="fade-up" style="transition-delay:0.15s"><div class="map-wrapper"><iframe src="https://yandex.ru/map-widget/v1/?ll=82.922734%2C55.058679&z=16&pt=82.922734%2C55.058679~pm2rdm&text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C%20%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%2C%20222%20%D0%BA2" allowfullscreen loading="lazy"></iframe><div class="map-amenities" style="display:flex; border-top:1px solid rgba(255,255,255,0.07);"><div style="flex:1; padding:14px 10px; text-align:center; font-size:0.78rem; color:#aaa; border-right:1px solid rgba(255,255,255,0.07);"><i class="fas fa-parking"></i><br>Бесплатная парковка</div><div style="flex:1; padding:14px 10px; text-align:center; font-size:0.78rem; color:#aaa;"><i class="fas fa-mug-hot"></i><br>Кофе и зона ожидания</div></div></div></div>
         </div>
     </div>
 </section>
-
-<!-- ФУТЕР -->
-<footer class="footer">
-    <div class="container footer-inner">
-        <div>
-            <div class="footer-brand"><span class="red">SIBOIL</span> DETAIL</div>
-            <div class="footer-copy">© 2025 — Новосибирск</div>
-        </div>
-        <div class="footer-links">
-            <a href="tel:+79231777900"><i class="fas fa-phone"></i> +7 923 177 79 00</a>
-            <a href="https://2gis.ru/novosibirsk/geo/70000001109861064" target="_blank" rel="noopener noreferrer">
-                <i class="fas fa-star"></i> Отзывы 2ГИС
-            </a>
-        </div>
-    </div>
-</footer>
-
-<!-- WhatsApp -->
-<a href="https://wa.me/79231777900" target="_blank" rel="noopener noreferrer"
-   class="whatsapp-btn" aria-label="Написать в WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-<!-- МОДАЛЬНОЕ ОКНО -->
-<div id="bookingModal" class="modal-overlay">
-    <div class="modal-box">
-        <div class="modal-top-line"></div>
-        <button id="closeModal" class="modal-close" aria-label="Закрыть">&times;</button>
-        <div class="modal-title">Запись на услугу</div>
-        <p id="modalServiceName" class="modal-service-badge"></p>
-
-        <!-- Сообщение о повторной записи -->
-        <div id="alreadySubmitted" style="display:none; flex-direction:column; align-items:center; text-align:center; padding:24px 0 8px; gap:16px;">
-            <div style="width:60px; height:60px; background:rgba(196,30,58,0.12); border:1px solid rgba(196,30,58,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center;">
-                <i class="fas fa-clock" style="color:var(--red); font-size:1.4rem;"></i>
-            </div>
-            <p style="color:var(--gray-light); font-size:0.95rem; line-height:1.7;">
-                Вы уже отправили заявку на запись по данной услуге.<br>
-                <span style="color:var(--white); font-weight:600;">В скором времени с Вами свяжутся.</span>
-            </p>
-        </div>
-
-        <form id="bookingForm" novalidate>
-            <div class="modal-field">
-                <i class="fas fa-user"></i>
-                <input type="text" id="clientName" class="modal-input"
-                       placeholder="Ваше имя" autocomplete="name" required>
-            </div>
-            <div class="modal-field">
-                <i class="fas fa-phone"></i>
-                <input type="tel" id="clientPhone" class="modal-input"
-                       placeholder="Телефон (11 цифр, начиная с 7 или 8)" autocomplete="tel" required>
-            </div>
-            <div id="phoneError" class="phone-error"></div>
-            <button type="submit" id="submitBtn" class="modal-submit">
-                <i class="fas fa-paper-plane"></i> Отправить заявку
-            </button>
-        </form>
-        <div id="formMessage" class="form-message"></div>
-    </div>
-</div>
-
+<footer class="footer"><div class="container footer-inner"><div><div class="footer-brand"><span class="red">SIBOIL</span> DETAIL</div><div class="footer-copy">© 2025 — Новосибирск</div></div><div class="footer-links"><a href="tel:+79231777900"><i class="fas fa-phone"></i> +7 923 177 79 00</a><a href="https://2gis.ru/novosibirsk/geo/70000001109861064" target="_blank"><i class="fas fa-star"></i> Отзывы 2ГИС</a></div></div></footer>
+<a href="https://wa.me/79231777900" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div id="bookingModal" class="modal-overlay"><div class="modal-box"><button id="closeModal" class="modal-close">&times;</button><div class="modal-title">Запись на услугу</div><p id="modalServiceName" class="modal-service-badge"></p><form id="bookingForm"><div class="modal-field"><i class="fas fa-user"></i><input type="text" id="clientName" class="modal-input" placeholder="Ваше имя" required></div><div class="modal-field"><i class="fas fa-phone"></i><input type="tel" id="clientPhone" class="modal-input" placeholder="Телефон (11 цифр, начиная с 7 или 8)" required></div><div id="phoneError" class="phone-error"></div><button type="submit" id="submitBtn" class="modal-submit"><i class="fas fa-paper-plane"></i> Отправить заявку</button></form><div id="formMessage" class="form-message"></div></div></div>
 <script>
-    let currentService = '';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxhOCArFB3tWQpGeAMIpCzPJyKsBzhg_IcMzdkVKHf6hQQZwkgD_-j41-psqvoPXAFy/exec';
+let currentService = '';
 let isSubmitting = false;
-
-function validatePhone(phone) {
-    const cleaned = phone.replace(/\D/g, '');
-    if (cleaned.length === 11 && (cleaned.startsWith('7') || cleaned.startsWith('8'))) {
-        return { valid: true, cleaned };
-    }
-    return { valid: false, cleaned };
-}
-
-function showPhoneError(msg) {
-    const err = document.getElementById('phoneError');
-    const inp = document.getElementById('clientPhone');
-    err.textContent = msg ? '❌ ' + msg : '';
-    inp.classList.toggle('error-border', !!msg);
-}
-
+function validatePhone(phone) { const cleaned = phone.replace(/\D/g, ''); if (cleaned.length === 11 && (cleaned.startsWith('7') || cleaned.startsWith('8'))) return { valid: true, cleaned }; return { valid: false, cleaned }; }
+function showPhoneError(msg) { const err = document.getElementById('phoneError'); const inp = document.getElementById('clientPhone'); err.textContent = msg ? '❌ ' + msg : ''; inp.classList.toggle('error-border', !!msg); }
 document.getElementById('clientPhone').addEventListener('input', () => showPhoneError(''));
-
 const BLOCK_DURATION = 3 * 60 * 60 * 1000;
-
-function isServiceBlocked(title) {
-    const data = JSON.parse(localStorage.getItem('submittedServices') || '{}');
-    if (!data[title]) return false;
-    const elapsed = Date.now() - data[title];
-    if (elapsed > BLOCK_DURATION) {
-        delete data[title];
-        localStorage.setItem('submittedServices', JSON.stringify(data));
-        return false;
-    }
-    return true;
-}
-
-function blockService(title) {
-    const data = JSON.parse(localStorage.getItem('submittedServices') || '{}');
-    data[title] = Date.now();
-    localStorage.setItem('submittedServices', JSON.stringify(data));
-}
-
-document.querySelectorAll('.card-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const card = btn.closest('.service-card');
-        const title = card.querySelector('.card-title').innerText.trim();
-        const price = card.querySelector('.card-price').innerText.trim();
-        currentService = `${title} (${price})`;
-
-        if (isServiceBlocked(title)) {
-            document.getElementById('modalServiceName').textContent = title;
-            document.getElementById('bookingForm').style.display = 'none';
-            document.getElementById('alreadySubmitted').style.display = 'flex';
-            document.getElementById('phoneError').textContent = '';
-            document.getElementById('formMessage').textContent = '';
-            document.getElementById('bookingModal').style.display = 'flex';
-            return;
-        }
-
-        document.getElementById('bookingForm').style.display = 'block';
-        document.getElementById('alreadySubmitted').style.display = 'none';
-        document.getElementById('modalServiceName').textContent = currentService;
-        document.getElementById('formMessage').textContent = '';
-        document.getElementById('phoneError').textContent = '';
-        document.getElementById('bookingForm').reset();
-        document.getElementById('submitBtn').disabled = false;
-        document.getElementById('submitBtn').innerHTML = '<i class="fas fa-paper-plane"></i> Отправить заявку';
-        document.getElementById('bookingModal').style.display = 'flex';
-    });
-});
-
-function closeModal() {
-    document.getElementById('bookingModal').style.display = 'none';
-    isSubmitting = false;
-}
-
+function isServiceBlocked(title) { const data = JSON.parse(localStorage.getItem('submittedServices') || '{}'); if (!data[title]) return false; const elapsed = Date.now() - data[title]; if (elapsed > BLOCK_DURATION) { delete data[title]; localStorage.setItem('submittedServices', JSON.stringify(data)); return false; } return true; }
+function blockService(title) { const data = JSON.parse(localStorage.getItem('submittedServices') || '{}'); data[title] = Date.now(); localStorage.setItem('submittedServices', JSON.stringify(data)); }
+document.querySelectorAll('.card-btn').forEach(btn => { btn.addEventListener('click', () => { const card = btn.closest('.service-card'); const title = card.querySelector('.card-title').innerText.trim(); const price = card.querySelector('.card-price').innerText.trim(); currentService = `${title} (${price})`; if (isServiceBlocked(title)) { document.getElementById('modalServiceName').innerHTML = title; document.getElementById('bookingForm').style.display = 'none'; document.getElementById('bookingModal').style.display = 'flex'; return; } document.getElementById('bookingForm').style.display = 'block'; document.getElementById('modalServiceName').innerHTML = currentService; document.getElementById('formMessage').innerHTML = ''; document.getElementById('phoneError').innerHTML = ''; document.getElementById('bookingForm').reset(); document.getElementById('submitBtn').disabled = false; document.getElementById('submitBtn').innerHTML = '<i class="fas fa-paper-plane"></i> Отправить заявку'; document.getElementById('bookingModal').style.display = 'flex'; }); });
+function closeModal() { document.getElementById('bookingModal').style.display = 'none'; isSubmitting = false; }
 document.getElementById('closeModal').addEventListener('click', closeModal);
-document.getElementById('bookingModal').addEventListener('click', e => {
-    if (e.target === document.getElementById('bookingModal')) closeModal();
-});
+document.getElementById('bookingModal').addEventListener('click', e => { if (e.target === document.getElementById('bookingModal')) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-document.getElementById('bookingForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    if (isSubmitting) {
-        document.getElementById('formMessage').innerHTML = '<span style="color: orange;">⏳ Подождите, заявка уже отправляется...</span>';
-        return;
-    }
-
-    const name = document.getElementById('clientName').value.trim();
-    const phoneRaw = document.getElementById('clientPhone').value.trim();
-    const submitBtn = document.getElementById('submitBtn');
-    const formMsg = document.getElementById('formMessage');
-
-    if (!name) {
-        formMsg.innerHTML = '<span style="color:#e8213f;">❌ Введите ваше имя</span>';
-        return;
-    }
-    if (!phoneRaw) {
-        showPhoneError('Введите номер телефона');
-        formMsg.textContent = '';
-        return;
-    }
-
-    const pv = validatePhone(phoneRaw);
-    if (!pv.valid) {
-        const len = pv.cleaned.length;
-        showPhoneError(len !== 11
-            ? `Номер должен содержать 11 цифр. Сейчас: ${len}. Пример: 79123456789`
-            : 'Номер должен начинаться с 7 или 8');
-        formMsg.textContent = '';
-        return;
-    }
-
-    showPhoneError('');
-    isSubmitting = true;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправляем...';
-    formMsg.innerHTML = '<span style="color:#aaa;">⏳ Отправка заявки...</span>';
-
-    try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbybmUMlY6bTESGHDQgh79O0NXuw9T5Ymw3JdFHy5_3eYwTNGXc2jWzsSQ1tOXGiVtBi/exec", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        name: name,
-        phone: '+' + pv.cleaned,
-        service: currentService
-    })
-});
-
-        const result = await response.json();
-        
-        if (result.status === 'ok') {
-            const title = currentService.split(' (')[0];
-            blockService(title);
-            
-            formMsg.innerHTML = '<span style="color:#4caf50;">✅ Заявка принята! Мы свяжемся с вами.</span>';
-            setTimeout(() => {
-                closeModal();
-                document.getElementById('bookingForm').reset();
-                isSubmitting = false;
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить заявку';
-            }, 2200);
-        } else {
-            let errorMsg = 'Ошибка отправки';
-            if (result.message === 'Too many requests') {
-                errorMsg = 'Подождите 30 секунд перед повторной отправкой';
-            } else if (result.message === 'Invalid phone') {
-                errorMsg = 'Неверный формат телефона';
-            } else if (result.message === 'Invalid name') {
-                errorMsg = 'Слишком короткое имя';
-            }
-            formMsg.innerHTML = `<span style="color:#e8213f;">❌ ${errorMsg}. Позвоните: +7 923 177 79 00</span>`;
-            isSubmitting = false;
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить заявку';
-        }
-    } catch (error) {
-        console.error('Ошибка:', error);
-        formMsg.innerHTML = `<span style="color:#e8213f;">❌ Ошибка соединения. Позвоните: <a href="tel:+79231777900" style="color:#e8213f;">+7 923 177 79 00</a></span>`;
-        isSubmitting = false;
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить заявку';
-    }
-});
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.12 });
-
+document.getElementById('bookingForm').addEventListener('submit', async function(e) { e.preventDefault(); if (isSubmitting) { document.getElementById('formMessage').innerHTML = '<span style="color: orange;">⏳ Подождите...</span>'; return; } const name = document.getElementById('clientName').value.trim(); const phoneRaw = document.getElementById('clientPhone').value.trim(); const submitBtn = document.getElementById('submitBtn'); const formMsg = document.getElementById('formMessage'); if (!name) { formMsg.innerHTML = '<span style="color:#e8213f;">❌ Введите имя</span>'; return; } if (!phoneRaw) { showPhoneError('Введите номер телефона'); return; } const pv = validatePhone(phoneRaw); if (!pv.valid) { showPhoneError('Номер должен содержать 11 цифр и начинаться с 7 или 8'); return; } showPhoneError(''); isSubmitting = true; submitBtn.disabled = true; submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправляем...'; formMsg.innerHTML = '<span style="color:#aaa;">⏳ Отправка...</span>'; try { const response = await fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: name, phone: '+' + pv.cleaned, service: currentService }) }); const result = await response.json(); if (result.status === 'ok') { blockService(currentService.split(' (')[0]); formMsg.innerHTML = '<span style="color:#4caf50;">✅ Заявка принята! Мы свяжемся с вами.</span>'; setTimeout(() => { closeModal(); document.getElementById('bookingForm').reset(); isSubmitting = false; submitBtn.disabled = false; submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить заявку'; }, 2200); } else { throw new Error(); } } catch(error) { formMsg.innerHTML = '<span style="color:#e8213f;">❌ Ошибка. Позвоните: +7 923 177 79 00</span>'; isSubmitting = false; submitBtn.disabled = false; submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить заявку'; } });
+const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }); }, { threshold: 0.12 });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
