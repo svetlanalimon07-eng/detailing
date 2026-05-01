@@ -1203,7 +1203,6 @@
 </div>
 
 <script>
-    const FORMSPREE_ID = 'xpqknkqe';
     let currentService = '';
 
     function validatePhone(phone) {
@@ -1316,15 +1315,18 @@
         formMsg.innerHTML = '<span style="color:#aaa;">Отправляем заявку...</span>';
 
         try {
-            const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name,
-                    phone: '+' + pv.cleaned,
-                    service: currentService
-                })
-            });
+            const res = await fetch("https://script.google.com/macros/s/AKfycbxmjG1yCYzk3Bpif8M4zxHSuteSBD5oK3GIED9iIyl4oQEQd5-o7S-FlIBPU-WvrR2t/exec", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        name,
+        phone: '+' + pv.cleaned,
+        service: currentService,
+        key: 'sib_secret_123'
+    })
+});
 
             if (res.ok) {
                 const title = currentService.split(' (')[0];
