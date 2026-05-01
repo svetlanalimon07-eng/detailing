@@ -1204,158 +1204,185 @@
 
 <script>
     let currentService = '';
+let isSubmitting = false;
 
-    function validatePhone(phone) {
-        const cleaned = phone.replace(/\D/g, '');
-        if (cleaned.length === 11 && (cleaned.startsWith('7') || cleaned.startsWith('8'))) {
-            return { valid: true, cleaned };
-        }
-        return { valid: false, cleaned };
+function validatePhone(phone) {
+    const cleaned = phone.replace(/\D/g, '');
+    if (cleaned.length === 11 && (cleaned.startsWith('7') || cleaned.startsWith('8'))) {
+        return { valid: true, cleaned };
     }
+    return { valid: false, cleaned };
+}
 
-    function showPhoneError(msg) {
-        const err = document.getElementById('phoneError');
-        const inp = document.getElementById('clientPhone');
-        err.textContent = msg ? '❌ ' + msg : '';
-        inp.classList.toggle('error-border', !!msg);
-    }
+function showPhoneError(msg) {
+    const err = document.getElementById('phoneError');
+    const inp = document.getElementById('clientPhone');
+    err.textContent = msg ? '❌ ' + msg : '';
+    inp.classList.toggle('error-border', !!msg);
+}
 
-    document.getElementById('clientPhone').addEventListener('input', () => showPhoneError(''));
+document.getElementById('clientPhone').addEventListener('input', () => showPhoneError(''));
 
-    const BLOCK_DURATION = 3 * 60 * 60 * 1000;
+const BLOCK_DURATION = 3 * 60 * 60 * 1000;
 
-    function isServiceBlocked(title) {
-        const data = JSON.parse(localStorage.getItem('submittedServices') || '{}');
-        if (!data[title]) return false;
-        const elapsed = Date.now() - data[title];
-        if (elapsed > BLOCK_DURATION) {
-            delete data[title];
-            localStorage.setItem('submittedServices', JSON.stringify(data));
-            return false;
-        }
-        return true;
-    }
-
-    function blockService(title) {
-        const data = JSON.parse(localStorage.getItem('submittedServices') || '{}');
-        data[title] = Date.now();
+function isServiceBlocked(title) {
+    const data = JSON.parse(localStorage.getItem('submittedServices') || '{}');
+    if (!data[title]) return false;
+    const elapsed = Date.now() - data[title];
+    if (elapsed > BLOCK_DURATION) {
+        delete data[title];
         localStorage.setItem('submittedServices', JSON.stringify(data));
+        return false;
     }
+    return true;
+}
 
-    document.querySelectorAll('.card-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const card = btn.closest('.service-card');
-            const title = card.querySelector('.card-title').innerText.trim();
-            const price = card.querySelector('.card-price').innerText.trim();
-            currentService = `${title} (${price})`;
+function blockService(title) {
+    const data = JSON.parse(localStorage.getItem('submittedServices') || '{}');
+    data[title] = Date.now();
+    localStorage.setItem('submittedServices', JSON.stringify(data));
+}
 
-            if (isServiceBlocked(title)) {
-                document.getElementById('modalServiceName').textContent = title;
-                document.getElementById('bookingForm').style.display = 'none';
-                document.getElementById('alreadySubmitted').style.display = 'flex';
-                document.getElementById('phoneError').textContent = '';
-                document.getElementById('formMessage').textContent = '';
-                document.getElementById('bookingModal').style.display = 'flex';
-                return;
-            }
+document.querySelectorAll('.card-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const card = btn.closest('.service-card');
+        const title = card.querySelector('.card-title').innerText.trim();
+        const price = card.querySelector('.card-price').innerText.trim();
+        currentService = `${title} (${price})`;
 
-            document.getElementById('bookingForm').style.display = 'block';
-            document.getElementById('alreadySubmitted').style.display = 'none';
-            document.getElementById('modalServiceName').textContent = currentService;
-            document.getElementById('formMessage').textContent = '';
+        if (isServiceBlocked(title)) {
+            document.getElementById('modalServiceName').textContent = title;
+            document.getElementById('bookingForm').style.display = 'none';
+            document.getElementById('alreadySubmitted').style.display = 'flex';
             document.getElementById('phoneError').textContent = '';
-            document.getElementById('bookingForm').reset();
-            document.getElementById('submitBtn').disabled = false;
-            document.getElementById('submitBtn').innerHTML = '<i class="fas fa-paper-plane"></i> Отправить заявку';
+            document.getElementById('formMessage').textContent = '';
             document.getElementById('bookingModal').style.display = 'flex';
-        });
+            return;
+        }
+
+        document.getElementById('bookingForm').style.display = 'block';
+        document.getElementById('alreadySubmitted').style.display = 'none';
+        document.getElementById('modalServiceName').textContent = currentService;
+        document.getElementById('formMessage').textContent = '';
+        document.getElementById('phoneError').textContent = '';
+        document.getElementById('bookingForm').reset();
+        document.getElementById('submitBtn').disabled = false;
+        document.getElementById('submitBtn').innerHTML = '<i class="fas fa-paper-plane"></i> Отправить заявку';
+        document.getElementById('bookingModal').style.display = 'flex';
     });
-
-    function closeModal() {
-        document.getElementById('bookingModal').style.display = 'none';
-    }
-
-    document.getElementById('closeModal').addEventListener('click', closeModal);
-    document.getElementById('bookingModal').addEventListener('click', e => {
-        if (e.target === document.getElementById('bookingModal')) closeModal();
-    });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-
-        const name      = document.getElementById('clientName').value.trim();
-        const phoneRaw  = document.getElementById('clientPhone').value.trim();
-        const submitBtn = document.getElementById('submitBtn');
-        const formMsg   = document.getElementById('formMessage');
-
-        if (!name) {
-            formMsg.innerHTML = '<span style="color:#e8213f;">❌ Введите ваше имя</span>';
-            return;
-        }
-        if (!phoneRaw) {
-            showPhoneError('Введите номер телефона');
-            formMsg.textContent = '';
-            return;
-        }
-
-        const pv = validatePhone(phoneRaw);
-        if (!pv.valid) {
-            const len = pv.cleaned.length;
-            showPhoneError(len !== 11
-                ? `Номер должен содержать 11 цифр. Сейчас: ${len}. Пример: 79123456789`
-                : 'Номер должен начинаться с 7 или 8');
-            formMsg.textContent = '';
-            return;
-        }
-
-        showPhoneError('');
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправляем...';
-        formMsg.innerHTML = '<span style="color:#aaa;">Отправляем заявку...</span>';
-
-        try {
-            const res = await fetch("https://script.google.com/macros/s/AKfycbxmjG1yCYzk3Bpif8M4zxHSuteSBD5oK3GIED9iIyl4oQEQd5-o7S-FlIBPU-WvrR2t/exec", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        name,
-        phone: '+' + pv.cleaned,
-        service: currentService,
-        key: 'sib_secret_123'
-    })
 });
 
-            if (res.ok) {
-                const title = currentService.split(' (')[0];
-                blockService(title);
-                formMsg.innerHTML = '<span style="color:#4caf50;">✅ Заявка принята! Мы свяжемся с вами.</span>';
-                setTimeout(() => {
-                    closeModal();
-                    document.getElementById('bookingForm').reset();
-                }, 2200);
-            } else {
-                throw new Error();
+function closeModal() {
+    document.getElementById('bookingModal').style.display = 'none';
+    isSubmitting = false;
+}
+
+document.getElementById('closeModal').addEventListener('click', closeModal);
+document.getElementById('bookingModal').addEventListener('click', e => {
+    if (e.target === document.getElementById('bookingModal')) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    if (isSubmitting) {
+        document.getElementById('formMessage').innerHTML = '<span style="color: orange;">⏳ Подождите, заявка уже отправляется...</span>';
+        return;
+    }
+
+    const name = document.getElementById('clientName').value.trim();
+    const phoneRaw = document.getElementById('clientPhone').value.trim();
+    const submitBtn = document.getElementById('submitBtn');
+    const formMsg = document.getElementById('formMessage');
+
+    if (!name) {
+        formMsg.innerHTML = '<span style="color:#e8213f;">❌ Введите ваше имя</span>';
+        return;
+    }
+    if (!phoneRaw) {
+        showPhoneError('Введите номер телефона');
+        formMsg.textContent = '';
+        return;
+    }
+
+    const pv = validatePhone(phoneRaw);
+    if (!pv.valid) {
+        const len = pv.cleaned.length;
+        showPhoneError(len !== 11
+            ? `Номер должен содержать 11 цифр. Сейчас: ${len}. Пример: 79123456789`
+            : 'Номер должен начинаться с 7 или 8');
+        formMsg.textContent = '';
+        return;
+    }
+
+    showPhoneError('');
+    isSubmitting = true;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправляем...';
+    formMsg.innerHTML = '<span style="color:#aaa;">⏳ Отправка заявки...</span>';
+
+    try {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbxmjG1yCYzk3Bpif8M4zxHSuteSBD5oK3GIED9iIyl4oQEQd5-o7S-FlIBPU-WvrR2t/exec", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: name,
+                phone: '+' + pv.cleaned,
+                service: currentService,
+                key: 'sib_secret_123'
+            })
+        });
+
+        const result = await response.json();
+        
+        if (result.status === 'ok') {
+            const title = currentService.split(' (')[0];
+            blockService(title);
+            
+            formMsg.innerHTML = '<span style="color:#4caf50;">✅ Заявка принята! Мы свяжемся с вами.</span>';
+            setTimeout(() => {
+                closeModal();
+                document.getElementById('bookingForm').reset();
+                isSubmitting = false;
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить заявку';
+            }, 2200);
+        } else {
+            let errorMsg = 'Ошибка отправки';
+            if (result.message === 'Too many requests') {
+                errorMsg = 'Подождите 30 секунд перед повторной отправкой';
+            } else if (result.message === 'Invalid phone') {
+                errorMsg = 'Неверный формат телефона';
+            } else if (result.message === 'Invalid name') {
+                errorMsg = 'Слишком короткое имя';
             }
-        } catch {
-            formMsg.innerHTML = `<span style="color:#e8213f;">❌ Ошибка. Позвоните: <a href="tel:+79231777900" style="color:#e8213f;">+7 923 177 79 00</a></span>`;
+            formMsg.innerHTML = `<span style="color:#e8213f;">❌ ${errorMsg}. Позвоните: +7 923 177 79 00</span>`;
+            isSubmitting = false;
             submitBtn.disabled = false;
             submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить заявку';
         }
+    } catch (error) {
+        console.error('Ошибка:', error);
+        formMsg.innerHTML = `<span style="color:#e8213f;">❌ Ошибка соединения. Позвоните: <a href="tel:+79231777900" style="color:#e8213f;">+7 923 177 79 00</a></span>`;
+        isSubmitting = false;
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить заявку';
+    }
+});
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
     });
+}, { threshold: 0.12 });
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
