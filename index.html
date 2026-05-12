@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Siboil — Детейлинг студия Новосибирск</title>
-  <meta name="description" content="Siboil — профессиональный детейлинг в Новосибирске. Полировка, керамика, PPF, химчистка.">
+  <meta name="description" content="Siboil Detail — детейлинг сервис в Новосибирске. Полировка, тонирование, химчистка, правка вмятин PDR. Красный проспект 222 к2.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -419,6 +419,13 @@
       font-size: 15px; line-height: 1.8; opacity: .8; margin-bottom: 28px;
     }
 
+    .svc-price {
+      font-size: clamp(20px, 2.4vw, 30px);
+      font-weight: 900; letter-spacing: -.02em;
+      margin-bottom: 16px; margin-top: 20px;
+    }
+    .svc-price span { font-size: .5em; font-weight: 400; opacity: .6; }
+
     .link-arr {
       font-size: 14px; font-weight: 600;
       display: inline-flex; align-items: center; gap: 6px;
@@ -769,15 +776,15 @@
         <li><a href="#reviews">Отзывы <span class="arr">↗</span></a></li>
         <li><a href="#about">О студии <span class="arr">↗</span></a></li>
         <li><a href="#contacts">Контакты <span class="arr">↗</span></a></li>
-        <li><a href="tel:+73832223344">+7 (383) 222-33-44 <span class="arr">↗</span></a></li>
+        <li><a href="tel:+79231777900">+7 923 177 79 00 <span class="arr">↗</span></a></li>
       </ul>
     </nav>
     <div class="nav-overlay__footer">
       <div>
-        <p style="font-weight:700;font-size:16px">+7 (383) 222-33-44</p>
-        <p style="opacity:.4;font-size:13px;margin-top:4px">ул. Гоголя 42, Новосибирск</p>
+        <p style="font-weight:700;font-size:16px">+7 923 177 79 00</p>
+        <p style="opacity:.4;font-size:13px;margin-top:4px">Красный проспект, 222 к2, Новосибирск</p>
       </div>
-      <div style="font-size:13px;opacity:.4">Пн–Вс&nbsp;9:00–21:00</div>
+      <div style="font-size:13px;opacity:.4">Ежедневно 09:00–20:00</div>
     </div>
   </div>
 </div>
@@ -789,7 +796,7 @@
   <div class="nav-bar" id="navBar">
     <a href="/" class="nav-logo"><img src="logo.jpg" alt="Siboil Detail"></a>
     <div class="nav-tools">
-      <a href="tel:+73832223344" class="nav-phone">+7 (383) 222-33-44</a>
+      <a href="tel:+79231777900" class="nav-phone">+7 923 177 79 00</a>
       <button class="nav-burger" id="burger" aria-label="Меню">
         <span></span><span></span><span></span>
       </button>
@@ -853,11 +860,10 @@
 <section class="section" id="about">
   <div class="container">
     <div class="intro-text r">
-      <h3>Siboil — профессиональная детейлинг студия в Новосибирске.
-        Мы используем материалы и оборудование мирового уровня, чтобы
-        ваш автомобиль выглядел лучше, чем с конвейера. Полировка,
-        керамическое покрытие, бронирование плёнкой и химчистка —
-        весь спектр услуг для защиты и восстановления вашего автомобиля.
+      <h3>Siboil Detail — детейлинг сервис в Новосибирске на Красном проспекте.
+        Полировка кузова, тонирование стёкол, химчистка салона и правка вмятин
+        по технологии PDR — 4 услуги в одном месте. Работаем ежедневно
+        с 09:00 до 20:00, более 400 довольных клиентов.
       </h3>
       <a href="#services" class="btn">Все услуги</a>
     </div>
@@ -871,20 +877,20 @@
   <div class="container">
     <div class="stats-grid">
       <div class="stat r" style="transition-delay:.00s">
-        <div class="stat__n" data-val="7" data-suf="+">0</div>
-        <div class="stat__l">лет на рынке</div>
+        <div class="stat__n" data-val="1" data-suf="">0</div>
+        <div class="stat__l">год на рынке</div>
       </div>
       <div class="stat r" style="transition-delay:.08s">
-        <div class="stat__n" data-val="3500" data-suf="+">0</div>
+        <div class="stat__n" data-val="400" data-suf="+">0</div>
         <div class="stat__l">довольных клиентов</div>
       </div>
       <div class="stat r" style="transition-delay:.16s">
-        <div class="stat__n" data-val="12" data-suf="">0</div>
-        <div class="stat__l">мастеров в команде</div>
+        <div class="stat__n" data-val="4" data-suf="">0</div>
+        <div class="stat__l">услуги в одном месте</div>
       </div>
       <div class="stat r" style="transition-delay:.24s">
-        <div class="stat__n" data-val="100" data-suf="%">0</div>
-        <div class="stat__l">гарантия результата</div>
+        <div class="stat__n">09–20</div>
+        <div class="stat__l">ежедневно</div>
       </div>
     </div>
   </div>
@@ -902,19 +908,20 @@
   <div class="svc-pin" id="svcPin">
     <div class="svc-track" id="svcTrack">
 
-      <!-- 1: Полировка -->
+      <!-- 1: Полировка кузова -->
       <div class="svc-slide svc-slide--1">
         <div class="svc-body">
           <div class="svc-body__text">
             <h2>Полировка кузова</h2>
-            <p>Убираем царапины, потёртости, голограммы и окисление
-            лакокрасочного покрытия. Одно-, двух- и трёхступенчатая
-            полировка восстанавливает первоначальный блеск и глубину
-            цвета. Работаем с автомобилями любых марок и классов.</p>
+            <p>Восстановление блеска, удаление царапин и голограмм.
+            Одно-, двух- и трёхступенчатая полировка для автомобилей
+            любых марок и классов. Защитное покрытие в финале.
+            Возвращаем первоначальный вид лакокрасочного покрытия.</p>
+            <div class="svc-price">от 15 000 ₽ <span>/ комплекс</span></div>
             <a href="#contacts" class="link-arr">Записаться →</a>
           </div>
           <div style="margin-top:40px">
-            <a href="#contacts" class="btn btn--white">Все услуги</a>
+            <a href="#contacts" class="btn btn--white">Записаться</a>
           </div>
         </div>
         <div class="svc-img">
@@ -923,66 +930,68 @@
         </div>
       </div>
 
-      <!-- 2: Керамика -->
+      <!-- 2: Тонирование стёкол -->
       <div class="svc-slide svc-slide--2">
         <div class="svc-body">
           <div class="svc-body__text">
-            <h2>Керамическое покрытие</h2>
-            <p>Нанокерамика создаёт прочный защитный слой на кузове.
-            Защищает от UV-излучения, химических реагентов и мелких
-            царапин. Эффект лотоса — грязь и вода не прилипают
-            к поверхности. Гарантия до 5 лет.</p>
+            <h2>Тонирование стёкол</h2>
+            <p>Качественная атермальная тонировка. Защита от выгорания,
+            комфорт в салоне, снижение нагрева. Используем сертифицированные
+            плёнки ведущих производителей. Быстро, аккуратно, с гарантией.</p>
+            <div class="svc-price">от 3 000 ₽ <span>/ комплекс</span></div>
             <a href="#contacts" class="link-arr">Записаться →</a>
           </div>
           <div style="margin-top:40px">
-            <a href="#contacts" class="btn btn--red">Все услуги</a>
+            <a href="#contacts" class="btn btn--red">Записаться</a>
           </div>
         </div>
         <div class="svc-img">
-          <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=900&q=80"
-               alt="Керамическое покрытие">
+          <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=900&q=80"
+               alt="Тонирование стёкол">
         </div>
       </div>
 
-      <!-- 3: PPF -->
+      <!-- 3: Химчистка салона -->
       <div class="svc-slide svc-slide--3">
         <div class="svc-body">
           <div class="svc-body__text">
-            <h2>Бронирование плёнкой (PPF)</h2>
-            <p>Полиуретановая плёнка — максимальная физическая защита
-            кузова. Самовосстановление мелких царапин при нагреве.
-            Защита от гравия, насекомых, реагентов и UV.
-            Плёнки SunTek, STEK, Hexis.</p>
-            <a href="#contacts" class="link-arr">Записаться →</a>
-          </div>
-          <div style="margin-top:40px">
-            <a href="#contacts" class="btn btn--fill">Все услуги</a>
-          </div>
-        </div>
-        <div class="svc-img">
-          <img src="https://images.unsplash.com/photo-1603118675290-9e5a4b61c7bf?w=900&q=80"
-               alt="Бронирование PPF">
-        </div>
-      </div>
-
-      <!-- 4: Химчистка -->
-      <div class="svc-slide svc-slide--4">
-        <div class="svc-body">
-          <div class="svc-body__text">
             <h2>Химчистка салона</h2>
-            <p>Профессиональная химчистка вернёт салону первозданный
-            вид. Ткань, алькантара, кожа, пластик, ковровые покрытия.
-            Удаляем стойкие пятна и запахи. Кондиционирование кожи
-            и озонирование в подарок.</p>
+            <p>Глубокая очистка обивки, удаление запахов и пятен.
+            Ткань, алькантара, кожа, пластик, ковровые покрытия.
+            Только безопасные профессиональные составы.
+            Озонирование салона в подарок.</p>
+            <div class="svc-price">от 10 000 ₽ <span>/ полный цикл</span></div>
             <a href="#contacts" class="link-arr">Записаться →</a>
           </div>
           <div style="margin-top:40px">
-            <a href="#contacts" class="btn btn--white">Все услуги</a>
+            <a href="#contacts" class="btn btn--fill">Записаться</a>
           </div>
         </div>
         <div class="svc-img">
           <img src="https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?w=900&q=80"
                alt="Химчистка салона">
+        </div>
+      </div>
+
+      <!-- 4: Правка вмятин PDR -->
+      <div class="svc-slide svc-slide--4">
+        <div class="svc-body">
+          <div class="svc-body__text">
+            <h2>Правка вмятин (PDR)</h2>
+            <p>Технология PDR — быстрое и точное удаление вмятин без
+            нарушения лакокрасочного покрытия. Никакой шпаклёвки и покраски.
+            Работаем с вмятинами от града, парковочных повреждений
+            и мелких аварий.</p>
+            <div class="svc-price">от 2 000 ₽ <span>/ вмятина</span></div>
+            <a href="#contacts" class="link-arr">Записаться →</a>
+          </div>
+          <div style="margin-top:40px">
+            <a href="#contacts" class="btn btn--white">Записаться</a>
+          </div>
+        </div>
+        <div class="svc-img">
+          <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=900&q=80"
+               alt="Правка вмятин PDR">
         </div>
       </div>
 
@@ -1033,15 +1042,15 @@
         </div>
         <div class="c-card">
           <div class="c-card__img"><img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&q=80" alt="Mercedes"></div>
-          <div class="c-tag">Керамика</div>
-          <div class="c-title">Mercedes GLE — покрытие Gyeon Quartz</div>
-          <div class="c-text">Двухслойная нанокерамика с предварительной полировкой.</div>
+          <div class="c-tag">Тонировка</div>
+          <div class="c-title">Mercedes GLE — тонировка атермальной плёнкой</div>
+          <div class="c-text">Качественная тонировка всех стёкол с защитой от UV.</div>
         </div>
         <div class="c-card">
           <div class="c-card__img"><img src="https://images.unsplash.com/photo-1583267746897-2cf415887172?w=600&q=80" alt="Porsche"></div>
-          <div class="c-tag">PPF</div>
-          <div class="c-title">Porsche 911 — полное бронирование SunTek</div>
-          <div class="c-text">Оклейка кузова ударопрочной плёнкой. Гарантия 10 лет.</div>
+          <div class="c-tag">Правка вмятин</div>
+          <div class="c-title">Porsche 911 — правка вмятин от града</div>
+          <div class="c-text">Удаление множественных вмятин по технологии PDR без покраски.</div>
         </div>
         <div class="c-card">
           <div class="c-card__img"><img src="https://images.unsplash.com/photo-1570733577524-3a047079e80d?w=600&q=80" alt="Range Rover"></div>
@@ -1051,15 +1060,15 @@
         </div>
         <div class="c-card">
           <div class="c-card__img"><img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=80" alt="Audi"></div>
-          <div class="c-tag">Полировка + Керамика</div>
-          <div class="c-title">Audi RS6 — восстановление + защита</div>
-          <div class="c-text">Двухступенчатая полировка и нанесение Ceramic Pro Gold.</div>
+          <div class="c-tag">Полировка + Тонировка</div>
+          <div class="c-title">Audi RS6 — полировка и тонировка</div>
+          <div class="c-text">Двухступенчатая полировка кузова и тонировка боковых стёкол.</div>
         </div>
         <div class="c-card">
           <div class="c-card__img"><img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=600&q=80" alt="Tesla"></div>
-          <div class="c-tag">PPF + Тонировка</div>
-          <div class="c-title">Tesla Model S — бронирование + тонировка</div>
-          <div class="c-text">Матовая PPF-плёнка + керамическая тонировка Llumar CTX.</div>
+          <div class="c-tag">Химчистка + Полировка</div>
+          <div class="c-title">Tesla Model S — химчистка салона + полировка</div>
+          <div class="c-text">Полный цикл химчистки салона и восстановительная полировка кузова.</div>
         </div>
       </div>
     </div>
@@ -1081,7 +1090,7 @@
         <div class="reviews-source r" style="margin-top:10px">2ГИС · Новосибирск</div>
       </div>
       <div class="reviews-rating-badge r">
-        <div class="rrb-score">4.9</div>
+        <div class="rrb-score">4.8</div>
         <div class="rrb-right">
           <div class="rrb-stars">
             <svg class="rrb-star" viewBox="0 0 20 20"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg>
@@ -1150,8 +1159,8 @@
           <svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg>
           <svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg>
         </div>
-        <div class="rv-text">Наносили керамику на Lexus RX. Мастера работают аккуратно и профессионально. После покрытия машина блестит фантастически, вода скатывается шариками. Дали гарантийный лист и памятку по уходу. Уже прошло 8 месяцев — всё держится идеально.</div>
-        <div class="rv-service">Керамическое покрытие</div>
+        <div class="rv-text">Делали тонировку на Lexus RX. Мастера работают аккуратно и профессионально. Плёнка легла ровно, без пузырей и полос. Дали гарантийный лист и памятку по уходу. Уже прошло 8 месяцев — всё держится идеально.</div>
+        <div class="rv-service">Тонирование стёкол</div>
       </div>
 
       <div class="rv-card r" style="transition-delay:.20s">
@@ -1169,8 +1178,8 @@
           <svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg>
           <svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg>
         </div>
-        <div class="rv-text">Отличный сервис! Обклеивали передний бампер и пороги PPF-плёнкой. Клеили ровно, пузырей нет, кромки аккуратные. Персонал вежливый, можно сидеть ждать в комфортном помещении с кофе. Цена соответствует качеству. Спасибо!</div>
-        <div class="rv-service">Бронирование PPF</div>
+        <div class="rv-text">Отличный сервис! Убрали вмятину на двери после парковочного инцидента по технологии PDR. Без покраски, без следов — как будто ничего не было. Персонал вежливый, можно ждать с кофе. Цена соответствует качеству. Спасибо!</div>
+        <div class="rv-service">Правка вмятин (PDR)</div>
       </div>
 
       <div class="rv-card r" style="transition-delay:.25s">
@@ -1188,8 +1197,8 @@
           <svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg>
           <svg class="rv-star" viewBox="0 0 20 20"><path d="M10 1l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 16 3.8 20.3l2.4-7.4L0 8.4h7.6z"/></svg>
         </div>
-        <div class="rv-text">Пригнал Toyota Land Cruiser на комплекс: полировка + керамика. Работой доволен на 100%. Видно, что ребята любят своё дело — не торопятся, делают на совесть. Отдельное спасибо за то, что всё показали и рассказали после сдачи автомобиля.</div>
-        <div class="rv-service">Полировка + Керамика</div>
+        <div class="rv-text">Пригнал Toyota Land Cruiser на комплекс: полировка + тонировка. Работой доволен на 100%. Видно, что ребята любят своё дело — не торопятся, делают на совесть. Отдельное спасибо за то, что всё показали и рассказали после сдачи автомобиля.</div>
+        <div class="rv-service">Полировка + Тонировка</div>
       </div>
 
       <div class="rv-card r" style="transition-delay:.30s">
@@ -1225,8 +1234,8 @@
       <div class="cta-body r">
         <p>Запишитесь на бесплатную диагностику — специалист
         осмотрит автомобиль и подберёт оптимальный комплекс услуг
-        под ваш бюджет. Работаем без выходных с 9:00 до 21:00.</p>
-        <a href="tel:+73832223344" class="btn btn--cta">Позвонить нам</a>
+        под ваш бюджет. Работаем ежедневно с 09:00 до 20:00.</p>
+        <a href="tel:+79231777900" class="btn btn--cta">Позвонить нам</a>
       </div>
     </div>
   </div>
@@ -1243,16 +1252,16 @@
         <div class="c-info">
           <div class="c-info-lbl">Телефон</div>
           <div class="c-info-val">
-            <a href="tel:+73832223344" style="font-size:22px;font-weight:700">+7 (383) 222-33-44</a>
+            <a href="tel:+79231777900" style="font-size:22px;font-weight:700">+7 923 177 79 00</a>
           </div>
         </div>
         <div class="c-info">
           <div class="c-info-lbl">Адрес</div>
-          <div class="c-info-val">ул. Гоголя 42, Новосибирск, 630000</div>
+          <div class="c-info-val">Красный проспект, 222 к2, Новосибирск</div>
         </div>
         <div class="c-info">
           <div class="c-info-lbl">Режим работы</div>
-          <div class="c-info-val">Пн – Вс: 9:00 – 21:00</div>
+          <div class="c-info-val">Ежедневно: 09:00 – 20:00</div>
         </div>
         <div class="c-info">
           <div class="c-info-lbl">Соцсети</div>
@@ -1274,8 +1283,8 @@
           <select class="form-field" style="appearance:none;background:var(--bg-card) url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><path d=%22M4 6l4 4 4-4%22 fill=%22none%22 stroke=%22%23fff%22 stroke-width=%221.5%22/></svg>') no-repeat right 16px center;cursor:pointer;color:var(--white)">
             <option value="" disabled selected>Выберите услугу</option>
             <option>Полировка кузова</option>
-            <option>Керамическое покрытие</option>
-            <option>Бронирование плёнкой (PPF)</option>
+            <option>Тонирование стёкол</option>
+            <option>Правка вмятин (PDR)</option>
             <option>Химчистка салона</option>
             <option>Комплекс услуг</option>
           </select>
@@ -1311,8 +1320,8 @@
         <h4>Услуги</h4>
         <ul>
           <li><a href="#services">Полировка кузова</a></li>
-          <li><a href="#services">Керамическое покрытие</a></li>
-          <li><a href="#services">Бронирование PPF</a></li>
+          <li><a href="#services">Тонирование стёкол</a></li>
+          <li><a href="#services">Правка вмятин (PDR)</a></li>
           <li><a href="#services">Химчистка салона</a></li>
           <li><a href="#services">Тонировка стёкол</a></li>
         </ul>
@@ -1320,9 +1329,9 @@
       <div class="f-col">
         <h4>Контакты</h4>
         <ul>
-          <li><a href="tel:+73832223344">+7 (383) 222-33-44</a></li>
-          <li><a href="#">ул. Гоголя 42, Новосибирск</a></li>
-          <li><a href="#">Пн–Вс: 9:00–21:00</a></li>
+          <li><a href="tel:+79231777900">+7 923 177 79 00</a></li>
+          <li><a href="#">Красный проспект, 222 к2, Новосибирск</a></li>
+          <li><a href="#">Ежедневно 09:00–20:00</a></li>
           <li><a href="#">Instagram</a></li>
           <li><a href="#">ВКонтакте</a></li>
         </ul>
