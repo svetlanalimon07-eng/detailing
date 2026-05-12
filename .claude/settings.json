@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"/Users/a1/Сайты/siboil\" && git add -A && git diff --cached --quiet || { git commit -m \"auto: update site\" && git push origin main; }",
+            "statusMessage": "Сохраняю и пушу на GitHub...",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
