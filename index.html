@@ -1569,6 +1569,14 @@ function submitForm(e) {
     return p * (perPage * (cardW + GAP));
   }
 
+  const btnPrev = document.getElementById('rvPrev');
+  const btnNext = document.getElementById('rvNext');
+
+  function updateArrows() {
+    if (btnPrev) btnPrev.disabled = page === 0;
+    if (btnNext) btnNext.disabled = page === PAGES - 1;
+  }
+
   function goTo(p, animate) {
     page = Math.max(0, Math.min(PAGES - 1, p));
     const offset = getPageOffset(page);
@@ -1580,7 +1588,12 @@ function submitForm(e) {
     dotsWrap.querySelectorAll('.rv-dot').forEach((d, i) => {
       d.classList.toggle('active', i === page);
     });
+    updateArrows();
   }
+
+  // Arrow buttons
+  if (btnPrev) btnPrev.addEventListener('click', () => goTo(page - 1));
+  if (btnNext) btnNext.addEventListener('click', () => goTo(page + 1));
 
   // Dot click
   dotsWrap.querySelectorAll('.rv-dot').forEach(dot => {
