@@ -984,9 +984,17 @@
     <h2 class="r">Услуги</h2>
   </div>
 
-  <!-- GSAP pins this container -->
+  <div id="svcOuter"><!-- высота задаётся JS -->
   <div class="svc-pin" id="svcPin">
-    <div class="svc-section-label">Услуги</div>
+
+    <!-- Названия услуг — всегда видны -->
+    <nav class="svc-nav" id="svcNav">
+      <button class="svc-nav-btn active" data-idx="0">Полировка кузова</button>
+      <button class="svc-nav-btn"        data-idx="1">Тонирование стёкол</button>
+      <button class="svc-nav-btn"        data-idx="2">Химчистка салона</button>
+      <button class="svc-nav-btn"        data-idx="3">Правка вмятин (PDR)</button>
+    </nav>
+
     <div class="svc-track" id="svcTrack">
 
       <!-- 1: Полировка кузова -->
