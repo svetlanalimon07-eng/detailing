@@ -1462,102 +1462,107 @@ const statObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.stat').forEach(el => statObs.observe(el));
 
-/* ── GSAP: Services horizontal + Hero parallax ── */
-if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-
-  /* Services pin + horizontal slide */
+/* ── SERVICES: CSS sticky + wheel snap (без GSAP-пина) ── */
+(function () {
+  const svcOuter = document.getElementById('svcOuter');
   const svcPin   = document.getElementById('svcPin');
   const svcTrack = document.getElementById('svcTrack');
   const svcBar   = document.getElementById('svcBar');
-  const svcDots  = document.querySelectorAll('.svc-dot');
-  const N = document.querySelectorAll('.svc-slide').length;
+  const navBtns  = document.querySelectorAll('.svc-nav-btn');
+  const N        = document.querySelectorAll('.svc-slide').length;
+  if (!svcOuter || N === 0) return;
 
-  const svcAnim = gsap.to(svcTrack, {
-    x: () => -(svcTrack.scrollWidth - window.innerWidth),
-    ease: 'none',
-    scrollTrigger: {
-      trigger: svcPin,
-      pin: true,
-      scrub: true,          /* 1:1 с прокруткой, без задержки */
-      end: () => '+=' + (svcTrack.scrollWidth - window.innerWidth),
-      invalidateOnRefresh: true,
-      anticipatePin: 1,
-      onUpdate(self) {
-        const p = self.progress;
-        const idx = Math.min(Math.round(p * (N - 1)), N - 1);
-        if (!svcSnapping) svcCurSlide = idx;
-        svcDots.forEach((d, i) => d.classList.toggle('active', i === idx));
-        svcBar.style.width = (p * 100) + '%';
-      }
-    }
-  });
+  /* Высота outer = N * vh, чтобы было пространство для скролла */
+  function setSvcHeight() {
+    svcOuter.style.height = (N * window.innerHeight) + 'px';
+  }
+  setSvcHeight();
+  window.addEventListener('resize', () => { setSvcHeight(); updateFromScroll(); });
 
-  let svcCurSlide = 0;
-  let svcSnapping = false;
+  let curSlide   = 0;
+  let isSnapping = false;
 
-  function snapSvcSlide(idx) {
+  /* Обновляем трек на основе позиции скролла */
+  function updateFromScroll() {
+    const rect    = svcOuter.getBoundingClientRect();
+    const total   = (N - 1) * window.innerHeight;
+    const scrolled = Math.max(0, Math.min(total, -rect.top));
+    const progress = total > 0 ? scrolled / total : 0;
+
+    const travelX = svcTrack.scrollWidth - window.innerWidth;
+    svcTrack.style.transform = 'translateX(' + (-progress * travelX) + 'px)';
+
+    const idx = Math.min(Math.round(progress * (N - 1)), N - 1);
+    if (!isSnapping) curSlide = idx;
+    navBtns.forEach((b, i) => b.classList.toggle('active', i === idx));
+    if (svcBar) svcBar.style.width = (progress * 100) + '%';
+  }
+  window.addEventListener('scroll', updateFromScroll, { passive: true });
+  updateFromScroll();
+
+  /* Плавный снэп к слайду */
+  function snapTo(idx) {
     idx = Math.max(0, Math.min(N - 1, idx));
-    svcSnapping = true;
-    svcCurSlide = idx;
+    if (isSnapping && idx === curSlide) return;
+    isSnapping = true;
+    curSlide   = idx;
 
-    const st     = svcAnim.scrollTrigger;
-    const target = st.start + (idx / (N - 1)) * (st.end - st.start);
+    /* Абсолютная позиция скролла для этого слайда */
+    const docTop = svcOuter.getBoundingClientRect().top + window.scrollY;
+    const target = docTop + idx * window.innerHeight;
 
-    const done = () => { setTimeout(() => { svcSnapping = false; }, 120); };
+    navBtns.forEach((b, i) => b.classList.toggle('active', i === idx));
+    if (svcBar) svcBar.style.width = ((idx / (N - 1)) * 100) + '%';
+
+    const done = () => { setTimeout(() => { isSnapping = false; }, 80); };
 
     if (typeof lenis !== 'undefined' && lenis) {
       lenis.scrollTo(target, {
-        duration: 0.65,
-        easing: t => t < 0.5 ? 2*t*t : -1 + (4 - 2*t)*t,
+        duration: 0.72,
+        easing: t => t < .5 ? 2*t*t : -1 + (4 - 2*t)*t,
         onComplete: done
       });
     } else {
-      gsap.to(window, {
-        scrollTo: { y: target }, duration: 0.65,
-        ease: 'power2.inOut', onComplete: done
-      });
+      window.scrollTo({ top: target, behavior: 'smooth' });
+      setTimeout(done, 800);
     }
   }
 
-  /* Колесо: перехватываем только пока секция запинена */
+  /* Клик по кнопке названия */
+  navBtns.forEach(btn => {
+    btn.addEventListener('click', () => snapTo(+btn.dataset.idx));
+  });
+
+  /* Колесо мыши: перехватываем только пока секция запинена */
   window.addEventListener('wheel', (e) => {
-    const rect = svcPin.getBoundingClientRect();
-    if (Math.abs(rect.top) > 10) return;   /* не запинено */
-
-    if (svcSnapping) { e.preventDefault(); return; }
-
-    if      (e.deltaY > 10 && svcCurSlide < N - 1) { e.preventDefault(); snapSvcSlide(svcCurSlide + 1); }
-    else if (e.deltaY < -10 && svcCurSlide > 0)    { e.preventDefault(); snapSvcSlide(svcCurSlide - 1); }
-    /* иначе — не мешаем, страница сама уходит дальше */
+    if (Math.abs(svcPin.getBoundingClientRect().top) > 8) return;
+    if (isSnapping) { e.preventDefault(); return; }
+    if      (e.deltaY > 10 && curSlide < N - 1) { e.preventDefault(); snapTo(curSlide + 1); }
+    else if (e.deltaY < -10 && curSlide > 0)    { e.preventDefault(); snapTo(curSlide - 1); }
   }, { passive: false });
 
   /* Touch-свайп */
-  let svcTY = 0;
+  let tY = 0;
   window.addEventListener('touchstart', e => {
-    if (Math.abs(svcPin.getBoundingClientRect().top) > 10) return;
-    svcTY = e.touches[0].clientY;
+    if (Math.abs(svcPin.getBoundingClientRect().top) > 8) return;
+    tY = e.touches[0].clientY;
   }, { passive: true });
   window.addEventListener('touchend', e => {
-    if (Math.abs(svcPin.getBoundingClientRect().top) > 10) return;
-    const dy = svcTY - e.changedTouches[0].clientY;
-    if (Math.abs(dy) > 40) snapSvcSlide(svcCurSlide + (dy > 0 ? 1 : -1));
+    if (Math.abs(svcPin.getBoundingClientRect().top) > 8) return;
+    const dy = tY - e.changedTouches[0].clientY;
+    if (Math.abs(dy) > 40) snapTo(curSlide + (dy > 0 ? 1 : -1));
   }, { passive: true });
+})();
 
-  /* Hero parallax — very slow */
+/* ── GSAP: Hero parallax only ── */
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
   gsap.utils.toArray('.hero-photo img').forEach(img => {
     gsap.to(img, {
-      yPercent: 20,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 3.5,
-      }
+      yPercent: 20, ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 3.5 }
     });
   });
-
 }
 
 /* ── SMOOTH SCROLL (Lenis) ───────────────────── */
