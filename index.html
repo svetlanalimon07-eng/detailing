@@ -671,10 +671,21 @@
       margin-top: 36px;
     }
     .rv-dot {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: transparent;
+      border: none; cursor: pointer; padding: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .3s;
+    }
+    .rv-dot::after {
+      content: ''; display: block;
       width: 8px; height: 8px; border-radius: 50%;
       background: rgba(255,255,255,.2);
-      border: none; cursor: pointer; padding: 0;
       transition: background .3s, transform .3s;
+    }
+    .rv-dot.active::after {
+      background: var(--red);
+      transform: scale(1.4);
     }
     .rv-dot.active {
       background: var(--red);
