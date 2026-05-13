@@ -32,13 +32,34 @@
       --border:   rgba(255,255,255,.08);
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--white);
       overflow-x: hidden;
+      cursor: none;
     }
+    @media (pointer: coarse) { body { cursor: auto; } }
+
+    /* ══════════════════════════════════════════
+       CUSTOM CURSOR (desktop only)
+    ══════════════════════════════════════════ */
+    .cur {
+      position: fixed; top: 0; left: 0; z-index: 9999;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+    }
+    .cur-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--white);
+      transition: width .35s, height .35s, background .35s, opacity .35s;
+    }
+    .cur.is-large .cur-dot { width: 36px; height: 36px; opacity: .45; }
+    .cur.is-red   .cur-dot { background: var(--red); }
+    @media (pointer: coarse) { .cur { display: none; } }
+    /* Make all interactive elements use default cursor (overrides cursor:none) */
+    a, button, select, input, textarea, label { cursor: none; }
     a { text-decoration: none; color: inherit; }
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
