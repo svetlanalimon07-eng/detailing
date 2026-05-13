@@ -1462,7 +1462,7 @@ const statObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.stat').forEach(el => statObs.observe(el));
 
-/* ── SERVICES: CSS sticky + wheel snap (без GSAP-пина) ── */
+/* ── SERVICES: CSS sticky + wheel snap ── */
 (function () {
   const svcOuter = document.getElementById('svcOuter');
   const svcPin   = document.getElementById('svcPin');
@@ -1472,7 +1472,6 @@ document.querySelectorAll('.stat').forEach(el => statObs.observe(el));
   const N        = document.querySelectorAll('.svc-slide').length;
   if (!svcOuter || N === 0) return;
 
-  /* Высота outer = N * vh, чтобы было пространство для скролла */
   function setSvcHeight() {
     svcOuter.style.height = (N * window.innerHeight) + 'px';
   }
@@ -1481,16 +1480,22 @@ document.querySelectorAll('.stat').forEach(el => statObs.observe(el));
 
   let curSlide   = 0;
   let isSnapping = false;
+  let snapTimer  = null;
 
-  /* Обновляем трек на основе позиции скролла */
+  /* Абсолютная позиция svcOuter в документе (стабильна при скролле) */
+  function svcDocTop() {
+    return window.scrollY + svcOuter.getBoundingClientRect().top;
+  }
+
+  /* Рисуем трек по текущей позиции скролла */
   function updateFromScroll() {
-    const rect    = svcOuter.getBoundingClientRect();
-    const total   = (N - 1) * window.innerHeight;
+    const rect     = svcOuter.getBoundingClientRect();
+    const total    = (N - 1) * window.innerHeight;
     const scrolled = Math.max(0, Math.min(total, -rect.top));
     const progress = total > 0 ? scrolled / total : 0;
 
-    const travelX = svcTrack.scrollWidth - window.innerWidth;
-    svcTrack.style.transform = 'translateX(' + (-progress * travelX) + 'px)';
+    svcTrack.style.transform =
+      'translateX(' + (-progress * (svcTrack.scrollWidth - window.innerWidth)) + 'px)';
 
     const idx = Math.min(Math.round(progress * (N - 1)), N - 1);
     if (!isSnapping) curSlide = idx;
@@ -1500,46 +1505,56 @@ document.querySelectorAll('.stat').forEach(el => statObs.observe(el));
   window.addEventListener('scroll', updateFromScroll, { passive: true });
   updateFromScroll();
 
-  /* Плавный снэп к слайду */
+  /* Снэп к конкретному слайду */
   function snapTo(idx) {
     idx = Math.max(0, Math.min(N - 1, idx));
-    if (isSnapping && idx === curSlide) return;
+    if (isSnapping) return;
     isSnapping = true;
     curSlide   = idx;
 
-    /* Абсолютная позиция скролла для этого слайда */
-    const docTop = svcOuter.getBoundingClientRect().top + window.scrollY;
-    const target = docTop + idx * window.innerHeight;
-
+    const target = svcDocTop() + idx * window.innerHeight;
     navBtns.forEach((b, i) => b.classList.toggle('active', i === idx));
     if (svcBar) svcBar.style.width = ((idx / (N - 1)) * 100) + '%';
 
-    const done = () => { setTimeout(() => { isSnapping = false; }, 80); };
+    clearTimeout(snapTimer);
+
+    const release = () => {
+      clearTimeout(snapTimer);
+      snapTimer = setTimeout(() => { isSnapping = false; }, 80);
+    };
 
     if (typeof lenis !== 'undefined' && lenis) {
       lenis.scrollTo(target, {
-        duration: 0.72,
+        duration: 0.7,
         easing: t => t < .5 ? 2*t*t : -1 + (4 - 2*t)*t,
-        onComplete: done
+        onComplete: release
       });
+      /* Страховочный таймер: если onComplete не сработает */
+      snapTimer = setTimeout(() => { isSnapping = false; }, 1100);
     } else {
       window.scrollTo({ top: target, behavior: 'smooth' });
-      setTimeout(done, 800);
+      snapTimer = setTimeout(() => { isSnapping = false; }, 900);
     }
   }
 
-  /* Клик по кнопке названия */
+  /* Клик по табу названия */
   navBtns.forEach(btn => {
     btn.addEventListener('click', () => snapTo(+btn.dataset.idx));
   });
 
-  /* Колесо мыши: перехватываем только пока секция запинена */
+  /*
+   * Колесо мыши — capture-фаза + stopImmediatePropagation:
+   * Lenis зарегистрирован раньше нас; чтобы он не двигал страницу
+   * по своей логике внутри секции, мы останавливаем событие до него.
+   */
   window.addEventListener('wheel', (e) => {
-    if (Math.abs(svcPin.getBoundingClientRect().top) > 8) return;
-    if (isSnapping) { e.preventDefault(); return; }
-    if      (e.deltaY > 10 && curSlide < N - 1) { e.preventDefault(); snapTo(curSlide + 1); }
-    else if (e.deltaY < -10 && curSlide > 0)    { e.preventDefault(); snapTo(curSlide - 1); }
-  }, { passive: false });
+    if (Math.abs(svcPin.getBoundingClientRect().top) > 8) return; /* не в секции */
+    e.preventDefault();
+    e.stopImmediatePropagation(); /* блокируем Lenis */
+    if (isSnapping) return;
+    if      (e.deltaY > 10 && curSlide < N - 1) snapTo(curSlide + 1);
+    else if (e.deltaY < -10 && curSlide > 0)    snapTo(curSlide - 1);
+  }, { passive: false, capture: true });
 
   /* Touch-свайп */
   let tY = 0;
