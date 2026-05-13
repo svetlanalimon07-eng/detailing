@@ -1525,15 +1525,15 @@ document.querySelectorAll('.stat').forEach(el => statObs.observe(el));
 
     if (typeof lenis !== 'undefined' && lenis) {
       lenis.scrollTo(target, {
-        duration: 0.7,
+        duration: 1.4,
         easing: t => t < .5 ? 2*t*t : -1 + (4 - 2*t)*t,
         onComplete: release
       });
       /* Страховочный таймер: если onComplete не сработает */
-      snapTimer = setTimeout(() => { isSnapping = false; }, 1100);
+      snapTimer = setTimeout(() => { isSnapping = false; }, 1900);
     } else {
       window.scrollTo({ top: target, behavior: 'smooth' });
-      snapTimer = setTimeout(() => { isSnapping = false; }, 900);
+      snapTimer = setTimeout(() => { isSnapping = false; }, 1600);
     }
   }
 
