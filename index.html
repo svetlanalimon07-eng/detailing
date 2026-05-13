@@ -1493,18 +1493,6 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     });
   });
 
-  /* Works cards mild parallax */
-  gsap.utils.toArray('.c-card__img img').forEach(img => {
-    gsap.fromTo(img, { yPercent: -5 }, {
-      yPercent: 5, ease: 'none',
-      scrollTrigger: {
-        trigger: img.closest('.c-card'),
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 3,
-      }
-    });
-  });
 }
 
 /* ── WORKS CAROUSEL ──────────────────────────── */
