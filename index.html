@@ -1501,52 +1501,39 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
 
 }
 
-/* ── WORKS CAROUSEL ──────────────────────────── */
-const cTrack = document.getElementById('cTrack');
-const cPrev  = document.getElementById('cPrev');
-const cNext  = document.getElementById('cNext');
-const cCurEl = document.getElementById('cCur');
-const cCards = cTrack.querySelectorAll('.c-card');
-let cIdx = 0;
-
-function getVis() {
-  return window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 3;
+/* ── SMOOTH SCROLL (Lenis) ───────────────────── */
+let lenis;
+if (typeof Lenis !== 'undefined') {
+  lenis = new Lenis({
+    duration: 1.4,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    wheelMultiplier: 0.8
+  });
+  if (typeof gsap !== 'undefined') {
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  } else {
+    function lenisRaf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(lenisRaf);
+    }
+    requestAnimationFrame(lenisRaf);
+  }
 }
-function setCardW() {
-  const vis = getVis();
-  const gap = 24;
-  const w = (cTrack.parentElement.offsetWidth - gap * (vis - 1)) / vis;
-  cCards.forEach(c => { c.style.flex = `0 0 ${w}px`; });
-  updateC();
-}
-function updateC() {
-  const vis = getVis(), gap = 24;
-  const w   = (cTrack.parentElement.offsetWidth - gap * (vis - 1)) / vis;
-  const max = cCards.length - vis;
-  cIdx = Math.max(0, Math.min(cIdx, max));
-  cTrack.style.transform = `translateX(-${cIdx * (w + gap)}px)`;
-  cCurEl.textContent = cIdx + 1;
-  cPrev.style.opacity = cIdx === 0   ? '.3' : '1';
-  cNext.style.opacity = cIdx >= max  ? '.3' : '1';
-}
-cPrev.addEventListener('click', () => { cIdx--; updateC(); });
-cNext.addEventListener('click', () => { cIdx++; updateC(); });
-window.addEventListener('resize', setCardW);
-setCardW();
 
-/* Touch swipe */
-let tx0 = 0;
-cTrack.addEventListener('touchstart', e => tx0 = e.touches[0].clientX, { passive: true });
-cTrack.addEventListener('touchend',   e => {
-  const d = tx0 - e.changedTouches[0].clientX;
-  if (Math.abs(d) > 40) { if (d > 0) { cIdx++; updateC(); } else { cIdx--; updateC(); } }
-});
-
-/* ── SMOOTH SCROLL ───────────────────────────── */
+/* Anchor clicks — let Lenis handle smooth scroll */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href'));
-    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    if (lenis) {
+      lenis.scrollTo(target, { offset: -80, duration: 1.4 });
+    } else {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 });
 
