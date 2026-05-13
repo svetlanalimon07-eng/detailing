@@ -732,7 +732,12 @@
     .f-logo { font-size: 22px; font-weight: 900; letter-spacing: -.4px; margin-bottom: 12px; }
     .f-logo .slash { color: var(--red); font-weight: 300; }
     .f-sub { font-size: 13px; opacity: .4; line-height: 1.6; max-width: 200px; }
-    .f-col h4 {
+    .visually-hidden {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    .f-col h3 {
       font-size: 10px; font-weight: 700; text-transform: uppercase;
       letter-spacing: .12em; opacity: .35; margin-bottom: 18px;
     }
