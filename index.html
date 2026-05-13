@@ -401,8 +401,39 @@
       font-weight: 800; letter-spacing: -.02em;
     }
 
-    /* Pin container — GSAP will pin this */
-    .svc-pin { overflow: hidden; }
+    /* ── Outer scroll container (height set by JS = N × 100vh) */
+    #svcOuter { }
+
+    /* Pin container — CSS sticky */
+    .svc-pin {
+      position: sticky; top: 0;
+      height: 100vh; overflow: hidden;
+    }
+
+    /* Service-name nav strip — always visible */
+    .svc-nav {
+      position: absolute; top: var(--nav-h); left: 0; right: 0;
+      z-index: 210;
+      display: flex; justify-content: center;
+      background: rgba(0,0,0,.45);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .svc-nav-btn {
+      padding: 11px 22px;
+      font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      color: rgba(255,255,255,.38);
+      background: none; border: none;
+      border-bottom: 2px solid transparent;
+      transition: color .3s, border-color .3s;
+      cursor: none; white-space: nowrap;
+    }
+    .svc-nav-btn.active  { color: var(--white); border-bottom-color: var(--red); }
+    .svc-nav-btn:hover   { color: rgba(255,255,255,.7); }
+    @media(max-width:700px){
+      .svc-nav { justify-content: flex-start; overflow-x: auto; overflow-y: hidden; }
+      .svc-nav-btn { padding: 10px 14px; font-size: 9px; }
+    }
 
     /* Horizontal track: N slides × 100vw wide */
     .svc-track {
@@ -413,7 +444,7 @@
     /* Each slide = full viewport */
     .svc-slide {
       width: 100vw; flex-shrink: 0;
-      min-height: 88vh;
+      height: 100vh;
       display: grid; grid-template-columns: 1fr 1fr;
     }
 
