@@ -1219,10 +1219,18 @@
       </div><!-- /rv-track -->
     </div><!-- /rv-carousel -->
 
-    <!-- Dot navigation -->
-    <div class="rv-dots" id="rvDots">
-      <button class="rv-dot active" data-idx="0" aria-label="Страница отзывов 1"></button>
-      <button class="rv-dot" data-idx="1" aria-label="Страница отзывов 2"></button>
+    <!-- Reviews navigation: arrows + dots -->
+    <div class="rv-nav">
+      <button class="rv-arr" id="rvPrev" aria-label="Предыдущая страница отзывов">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 3L5 8l5 5"/></svg>
+      </button>
+      <div class="rv-dots" id="rvDots">
+        <button class="rv-dot active" data-idx="0" aria-label="Страница отзывов 1"></button>
+        <button class="rv-dot" data-idx="1" aria-label="Страница отзывов 2"></button>
+      </div>
+      <button class="rv-arr" id="rvNext" aria-label="Следующая страница отзывов">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 3l5 5-5 5"/></svg>
+      </button>
     </div>
 
     <div style="text-align:center; margin-top:40px">
