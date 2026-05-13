@@ -498,28 +498,6 @@
       opacity: .3; z-index: 10;
     }
 
-    /* Progress bar */
-    .svc-progress-wrap {
-      height: 2px; background: rgba(255,255,255,.08);
-      position: relative;
-    }
-    .svc-progress-bar {
-      position: absolute; left: 0; top: 0; bottom: 0;
-      background: var(--red); width: 25%;
-      transition: width .1s linear;
-    }
-
-    /* Dots */
-    .svc-dots {
-      display: flex; gap: 10px;
-      justify-content: center; padding: 22px 0;
-    }
-    .svc-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--white); opacity: .18;
-      transition: opacity .5s, transform .5s;
-    }
-    .svc-dot.active { opacity: 1; background: var(--red); transform: scale(1.3); }
 
     /* Progress bar — absolute at bottom of sticky pin */
     .svc-progress-wrap {
