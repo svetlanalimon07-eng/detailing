@@ -1666,6 +1666,43 @@ function submitForm(e) {
   goTo(0, false);
   window.addEventListener('resize', () => goTo(page, false));
 })();
+
+/* ── CUSTOM CURSOR ───────────────────────────── */
+(function(){
+  const cur = document.getElementById('cur');
+  if (!cur || window.matchMedia('(pointer: coarse)').matches) return;
+
+  let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  let cx = mx, cy = my;
+  let raf;
+
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+  function loop() {
+    cx += (mx - cx) * 0.16;
+    cy += (my - cy) * 0.16;
+    cur.style.transform = `translate(${cx}px, ${cy}px) translate(-50%, -50%)`;
+    raf = requestAnimationFrame(loop);
+  }
+  loop();
+
+  /* Grow on links / buttons */
+  document.addEventListener('mouseover', e => {
+    const t = e.target.closest('a, button, select, input, textarea, label, [data-hover]');
+    if (t) {
+      cur.classList.add('is-large');
+      if (t.closest('.cta-section') || t.matches('.btn--red')) cur.classList.add('is-red');
+    }
+  });
+  document.addEventListener('mouseout', e => {
+    const t = e.target.closest('a, button, select, input, textarea, label, [data-hover]');
+    if (t) { cur.classList.remove('is-large', 'is-red'); }
+  });
+
+  /* Hide when mouse leaves window */
+  document.addEventListener('mouseleave', () => { cur.style.opacity = '0'; });
+  document.addEventListener('mouseenter', () => { cur.style.opacity = '1'; });
+})();
 </script>
 </body>
 </html>
