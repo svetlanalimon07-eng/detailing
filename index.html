@@ -1494,8 +1494,9 @@ document.querySelectorAll('.stat').forEach(el => statObs.observe(el));
     const scrolled = Math.max(0, Math.min(total, -rect.top));
     const progress = total > 0 ? scrolled / total : 0;
 
+    const slideW = svcTrack.firstElementChild.offsetWidth;
     svcTrack.style.transform =
-      'translateX(' + (-progress * (svcTrack.scrollWidth - window.innerWidth)) + 'px)';
+      'translateX(' + (-progress * (N - 1) * slideW) + 'px)';
 
     const idx = Math.min(Math.round(progress * (N - 1)), N - 1);
     if (!isSnapping) curSlide = idx;
